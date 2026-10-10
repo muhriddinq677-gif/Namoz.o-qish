@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ayollar uchun Bomdod namozi</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#101114;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    transition:.3s;
+}
+
+body.light-mode{
+    background:#f2f4f5;
+    color:#172027;
+}
+
+.app{
+    width:100%;
+    max-width:480px;
+    margin:auto;
+    min-height:100vh;
+    padding:15px;
+    padding-bottom:30px;
+}
+
+/* TOP */
+
+.top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.back{
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:12px;
+    background:#00a859;
+    color:#fff;
+    font-size:19px;
+    cursor:pointer;
+}
+
+.top h1{
+    font-size:20px;
+    margin:0;
+    line-height:1.3;
+}
+
+/* INFO */
+
+.info{
+    background:#1a262f;
+    border-radius:15px;
+    padding:15px;
+    margin-bottom:14px;
+    line-height:1.6;
+}
+
+body.light-mode .info{
+    background:#fff;
+}
+
+/* ACCORDION */
+
+.step{
+    background:#1a262f;
+    border-radius:15px;
+    margin-bottom:10px;
+    overflow:hidden;
+}
+
+body.light-mode .step{
+    background:#fff;
+}
+
+.step-title{
+    min-height:58px;
+    padding:16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    cursor:pointer;
+    color:#64b5f6;
+    font-weight:bold;
+}
+
+.step-title i{
+    flex-shrink:0;
+    transition:.3s;
+}
+
+.step.open .step-title i{
+    transform:rotate(180deg);
+}
+
+.step-content{
+    display:none;
+    padding:0 16px 18px;
+    line-height:1.75;
+}
+
+.step.open .step-content{
+    display:block;
+}
+
+/* IMAGE PLACE */
+
+.image-box{
+    width:100%;
+    height:210px;
+    margin:5px 0 15px;
+    border-radius:13px;
+    background:#263643;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+body.light-mode .image-box{
+    background:#edf3f6;
+}
+
+.image-box img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+.image-text{
+    opacity:.6;
+    text-align:center;
+    padding:10px;
+}
+
+/* DUO */
+
+.duo{
+    background:#263643;
+    border-radius:12px;
+    padding:13px;
+    margin-top:10px;
+    line-height:1.8;
+}
+
+body.light-mode .duo{
+    background:#edf3f6;
+}
+
+.duo-title{
+    color:#64b5f6;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+/* NOTE */
+
+.note{
+    background:#332d19;
+    border-radius:12px;
+    padding:13px;
+    margin-top:10px;
+}
+
+body.light-mode .note{
+    background:#fff6d5;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    opacity:.65;
+    padding:25px 0;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body class="dark-mode">
+
+<div class="app">
+
+    <!-- TOP -->
+
+    <div class="top">
+
+        <button class="back" onclick="history.back()">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <h1 data-key="ab_title">
+            Bomdod namozi — ayollar uchun
+        </h1>
+
+    </div>
+
+
+    <div class="info" data-key="ab_intro">
+        Bomdod namozi 2 rakat sunnat va 2 rakat farzdan iborat.
+        Quyidagi bo‘limlarni bosib, har bir amalni batafsil
+        o‘rganishingiz mumkin.
+    </div>
+
+
+    <!-- 1 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_1">1. Niyat qilish</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/niyat.jpg"
+                     alt="Niyat qilish"
+                     onerror="this.style.display='none'">
+                <div class="image-text" data-key="ab_img_1">
+                    Niyat rasmi
+                </div>
+            </div>
+
+            <p data-key="ab_text_1">
+                Avval tahorat olinadi va Qibla tomonga yuzlanib tik
+                turiladi. Namozni boshlashdan oldin qalb bilan niyat
+                qilinadi.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_niyat_title">
+                    Bomdod sunnatiga niyat:
+                </div>
+
+                <span data-key="ab_niyat">
+                    Alloh roziligi uchun Qibla tomonga yuzlanib,
+                    Bomdod namozining ikki rakat sunnatini o‘qishni
+                    niyat qildim.
+                </span>
+
+            </div>
+
+            <p data-key="ab_text_1_2">
+                Niyat qalb bilan qilinadi. Uni til bilan aytib olish
+                o‘rganish uchun mumkin.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- 2 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_2">2. Iftitoh takbiri</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/takbir.jpg"
+                     alt="Takbir"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Takbir rasmi</div>
+            </div>
+
+            <p data-key="ab_text_2">
+                Niyatdan keyin qo‘llar ko‘tarilib:
+            </p>
+
+            <div class="duo" data-key="ab_takbir">
+                Allohu akbar
+            </div>
+
+            <p data-key="ab_text_2_2">
+                deb namoz boshlanadi. Ayol kishi qo‘llarini yelka
+                barobarigacha ko‘tarib, keyin qo‘llarini ko‘krak
+                ustida bog‘laydi.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- 3 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_3">3. Qo‘llarni bog‘lash va Sano</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/sano.jpg"
+                     alt="Sano"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Qo‘llarni bog‘lash rasmi</div>
+            </div>
+
+            <p data-key="ab_text_3">
+                Qo‘llar ko‘krak ustida bog‘lanadi. Keyin Sano duosi
+                o‘qiladi.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_sano_title">
+                    Sano duosi
+                </div>
+
+                <span data-key="ab_sano">
+                    Subhanakallohumma va bihamdika va tabarokasmuka
+                    va ta'ala jadduka va la ilaha g‘oyruk.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 4 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_4">4. Fotiha surasi</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <p data-key="ab_text_4">
+                Sano duosidan keyin A'uzu va Bismilloh aytilib,
+                Fotiha surasi o‘qiladi.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_fotiha_title">
+                    Fotiha surasi
+                </div>
+
+                <span data-key="ab_fotiha">
+                    A'uzu billahi minash-shaytonir-rojiym.
+                    Bismillahir-rohmanir-rohiym.
+                    Alhamdu lillahi robbil-'alamiyn.
+                    Ar-rohmanir-rohiym.
+                    Maliki yavmiddiyn.
+                    Iyyaka na'budu va iyyaka nasta'iyn.
+                    Ihdinas-sirotol-mustaqiym.
+                    Sirotollaziyna an'amta 'alayhim
+                    g‘oyril-mag‘zubi 'alayhim valazzolliyn.
+                    Omin.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 5 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_5">5. Zam sura</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/qiroat.jpg"
+                     alt="Qiroat"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Qiroat rasmi</div>
+            </div>
+
+            <p data-key="ab_text_5">
+                Fotiha surasidan keyin bitta zam sura o‘qiladi.
+                Quyidagi suralardan birortasi o‘qilishi mumkin.
+                Ularning hammasini birgalikda o‘qish shart emas.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_kavsar_title">
+                    1. Kavsar surasi
+                </div>
+
+                <span data-key="ab_kavsar">
+                    Inna a'toynakal-kavsar.
+                    Fa solli lirobbika vanhar.
+                    Inna shani'aka huval-abtar.
+                </span>
+
+            </div>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_ixlos_title">
+                    2. Ixlos surasi
+                </div>
+
+                <span data-key="ab_ixlos">
+                    Qul huvallohu ahad.
+                    Allohus-somad.
+                    Lam yalid va lam yulad.
+                    Va lam yakul-lahu kufuvan ahad.
+                </span>
+
+            </div>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_falaq_title">
+                    3. Falaq surasi
+                </div>
+
+                <span data-key="ab_falaq">
+                    Qul a'uzu birobbil-falaq.
+                    Min sharri ma khalaq.
+                    Va min sharri g‘osiqin iza vaqob.
+                    Va min sharrin-naffasati fil-'uqad.
+                    Va min sharri hasidin iza hasad.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 6 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_6">6. Ruku</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/ruku.jpg"
+                     alt="Ruku"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Ruku rasmi</div>
+            </div>
+
+            <p data-key="ab_text_6">
+                Zam suradan keyin Allohu akbar deb rukuga egilinadi.
+                Rukuda qo‘llar tizzalarga qo‘yiladi.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_ruku_title">
+                    Rukuda 3 marta
+                </div>
+
+                <span data-key="ab_ruku">
+                    Subhana robbiyal-'aziym.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 7 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_7">7. Qavma — rukudan turish</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/qavma.jpg"
+                     alt="Qavma"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Qavma rasmi</div>
+            </div>
+
+            <p data-key="ab_text_7">
+                Rukudan tik turilayotganda:
+            </p>
+
+            <div class="duo" data-key="ab_qavma_1">
+                Sami'allohu liman hamidah.
+            </div>
+
+            <p data-key="ab_qavma_2">
+                To‘liq tik turilgach:
+            </p>
+
+            <div class="duo" data-key="ab_qavma_3">
+                Robbana lakal-hamd.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 8 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_8">8. Birinchi sajda</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/sajda.jpg"
+                     alt="Sajda"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Sajda rasmi</div>
+            </div>
+
+            <p data-key="ab_text_8">
+                Allohu akbar deb sajdaga boriladi. Sajdada peshona
+                va burun, ikki kaft, ikki tizza va oyoq barmoqlari
+                yerga tegadi.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_sajda_title">
+                    Sajdada 3 marta
+                </div>
+
+                <span data-key="ab_sajda">
+                    Subhana robbiyal-a'la.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 9 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_9">
+                9. Jalsa va ikkinchi sajda
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/jalsa.jpg"
+                     alt="Jalsa"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Jalsa rasmi</div>
+            </div>
+
+            <p data-key="ab_text_9">
+                Allohu akbar deb sajdadan bosh ko‘tarilib, ikki sajda
+                orasida qisqa vaqt o‘tiladi.
+            </p>
+
+            <p data-key="ab_text_9_2">
+                Keyin yana Allohu akbar deb ikkinchi sajdaga boriladi.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_sajda_2_title">
+                    Ikkinchi sajdada 3 marta
+                </div>
+
+                <span data-key="ab_sajda_2">
+                    Subhana robbiyal-a'la.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 10 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_10">
+                10. Ikkinchi rakatga turish
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/ikkinchirakat.jpg"
+                     alt="Ikkinchi rakat"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Ikkinchi rakat rasmi</div>
+            </div>
+
+            <p data-key="ab_text_10">
+                Ikkinchi sajdadan keyin Allohu akbar deb ikkinchi
+                rakatga turiladi.
+            </p>
+
+            <p data-key="ab_text_10_2">
+                Qo‘llar ko‘krak ustida bog‘lanadi. Ikkinchi rakatda
+                Sano o‘qilmaydi. Bismilloh aytilib Fotiha surasi
+                o‘qiladi.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- 11 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_11">
+                11. Ikkinchi rakat Fotiha
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_fotiha_2_title">
+                    Fotiha
+                </div>
+
+                <span data-key="ab_fotiha_2">
+                    Bismillahir-rohmanir-rohiym.
+                    Alhamdu lillahi robbil-'alamiyn.
+                    Ar-rohmanir-rohiym.
+                    Maliki yavmiddiyn.
+                    Iyyaka na'budu va iyyaka nasta'iyn.
+                    Ihdinas-sirotol-mustaqiym.
+                    Sirotollaziyna an'amta 'alayhim
+                    g‘oyril-mag‘zubi 'alayhim valazzolliyn.
+                    Omin.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 12 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_12">
+                12. Ikkinchi rakat zam surasi
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <p data-key="ab_text_12">
+                Fotiha surasidan keyin yana bitta zam sura o‘qiladi.
+                Masalan, Ixlos surasini o‘qish mumkin.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_ixlos_2_title">
+                    Ixlos surasi
+                </div>
+
+                <span data-key="ab_ixlos_2">
+                    Qul huvallohu ahad.
+                    Allohus-somad.
+                    Lam yalid va lam yulad.
+                    Va lam yakul-lahu kufuvan ahad.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 13 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_13">
+                13. Ikkinchi rakat ruku
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/ruku2.jpg"
+                     alt="Ikkinchi rakat ruku"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Ruku rasmi</div>
+            </div>
+
+            <p data-key="ab_text_13">
+                Allohu akbar deb rukuga egilinadi.
+            </p>
+
+            <div class="duo" data-key="ab_ruku_2">
+                Subhana robbiyal-'aziym.
+                <br>
+                3 marta.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 14 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_14">
+                14. Qavma va ikki sajda
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/sajda2.jpg"
+                     alt="Ikkinchi sajdalar"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Qavma va sajda rasmi</div>
+            </div>
+
+            <p data-key="ab_text_14">
+                Rukudan tik turib Sami'allohu liman hamidah,
+                to‘g‘ri turib Robbana lakal-hamd deyiladi.
+            </p>
+
+            <p data-key="ab_text_14_2">
+                Keyin Allohu akbar deb birinchi sajdaga boriladi.
+            </p>
+
+            <div class="duo" data-key="ab_sajda_3">
+                Subhana robbiyal-a'la.
+                <br>
+                3 marta.
+            </div>
+
+            <p data-key="ab_text_14_3">
+                Sajdadan bosh ko‘tarib qisqa vaqt o‘tiladi va yana
+                ikkinchi sajda qilinadi.
+            </p>
+
+            <div class="duo" data-key="ab_sajda_4">
+                Subhana robbiyal-a'la.
+                <br>
+                3 marta.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 15 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_15">
+                15. Qa'da — oxirgi o‘tirish
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/qada.jpg"
+                     alt="Qa'da"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Qa'da rasmi</div>
+            </div>
+
+            <p data-key="ab_text_15">
+                Ikkinchi rakatning ikkinchi sajdasidan keyin
+                o'tiriladi. Bu oxirgi qa'da hisoblanadi.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_attahiyyat_title">
+                    Attahiyyat
+                </div>
+
+                <span data-key="ab_attahiyyat">
+                    Attahiyyatu lillahi vas-solavatu vat-toyyibat.
+                    Assalamu 'alayka ayyuhan-nabiyyu va rohmatullohi
+                    va barokatuh.
+                    Assalamu 'alayna va 'ala 'ibadillahis-solihiyn.
+                    Ashhadu alla ilaha illalloh va ashhadu anna
+                    Muhammadan 'abduhu va rosuluh.
+                </span>
+
+            </div>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_salovat_title">
+                    Salovat
+                </div>
+
+                <span data-key="ab_salovat">
+                    Allohumma solli 'ala Muhammadiv-va 'ala ali Muhammad.
+                    Kama sollayta 'ala Ibrohima va 'ala ali Ibrohim.
+                    Innakam hamidum-majid.
+                </span>
+
+            </div>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_robbana_title">
+                    Robbana duosi
+                </div>
+
+                <span data-key="ab_robbana">
+                    Robbana atina fid-dunya hasanatav-va fil-akhiroti
+                    hasanatav-va qina 'azaban-nar.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 16 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_16">
+                16. Salom berish
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/salom.jpg"
+                     alt="Salom"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Salom rasmi</div>
+            </div>
+
+            <p data-key="ab_text_16">
+                Avval o‘ng tomonga, keyin chap tomonga qarab:
+            </p>
+
+            <div class="duo" data-key="ab_salom">
+                Assalamu alaykum va rohmatulloh.
+            </div>
+
+            <p data-key="ab_text_16_2">
+                deb salom beriladi.
+            </p>
+
+            <p data-key="ab_text_16_3">
+                Shu bilan Bomdod namozining 2 rakat sunnati tugaydi.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- 17 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_17">
+                17. Bomdodning 2 rakat farzi
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="image-box">
+                <img src="images/abomdod/farz.jpg"
+                     alt="Farz"
+                     onerror="this.style.display='none'">
+                <div class="image-text">Farz rasmi</div>
+            </div>
+
+            <p data-key="ab_text_17">
+                Endi Bomdod namozining ikki rakat farzi o‘qiladi.
+            </p>
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_farz_niyat_title">
+                    Farzga niyat
+                </div>
+
+                <span data-key="ab_farz_niyat">
+                    Alloh roziligi uchun Qibla tomonga yuzlanib,
+                    Bomdod namozining ikki rakat farzini o‘qishni
+                    niyat qildim.
+                </span>
+
+            </div>
+
+            <p data-key="ab_farz_tartib">
+                Keyin Allohu akbar deb namoz boshlanadi.
+                Ikki rakat farz yuqorida ko‘rsatilgan tartibda
+                o‘qiladi. Farq qiladigan asosiy narsa — niyatda
+                “ikki rakat farzini” deyilishidir.
+            </p>
+
+            <div class="note" data-key="ab_note">
+                Eslatma: Namoz tartibining ayrim tafsilotlari
+                mazhablarga ko‘ra farq qilishi mumkin. Ushbu tartib
+                Hanafiy mazhabida keng tarqalgan tartib asosida berildi.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- 18 -->
+
+    <div class="step">
+
+        <div class="step-title">
+            <span data-key="ab_step_18">
+                18. Farz tugagach o‘qiladigan zikr
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="step-content">
+
+            <div class="duo">
+
+                <div class="duo-title" data-key="ab_zikr_title">
+                    Zikr
+                </div>
+
+                <span data-key="ab_zikr">
+                    Allohumma antas-salam va minkas-salam,
+                    tabarokta ya zal-jalali val-ikrom.
+                </span>
+
+            </div>
+
+            <p data-key="ab_zikr_meaning">
+                Ma'nosi: Ey Allohim! Sen Tinchlik egasisan va
+                tinchlik Sendandir. Ey ulug‘lik va ikrom egasi
+                bo‘lgan Zot, Sen barakotlisan.
+            </p>
+
+            <div class="duo" data-key="ab_final">
+                Shundan so‘ng Oyatul-Kursiy hamda 33 marta
+                Subhanalloh, 33 marta Alhamdulillah, 33 marta
+                Allohu akbar zikrlari aytilib duo qilinadi.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer data-key="footer">
+        Namoz O‘rganish
+    </footer>
+
+</div>
+
+
+<script src="namoz.js"></script>
+
+<script>
+
+/* YOPIQ / OCHIQ BO‘LIMLAR */
+
+document.querySelectorAll(".step-title").forEach(function(title){
+
+    title.addEventListener("click",function(){
+
+        const current = title.parentElement;
+
+        /*
+         * Bir vaqtning o‘zida faqat bosilgan
+         * bo‘lim ochiladi.
+         */
+
+        document.querySelectorAll(".step").forEach(function(step){
+
+            if(step !== current){
+                step.classList.remove("open");
+            }
+
+        });
+
+        current.classList.toggle("open");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

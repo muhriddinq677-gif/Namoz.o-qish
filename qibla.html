@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qibla Kompasi +320 Aniq</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #1a252f;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+        /* 320 gradusda yonadigan yashil fon */
+        body.qibla-match {
+            background-color: #115e3b;
+        }
+        .compass-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin-bottom: 30px;
+        }
+        /* Harakatsiz yashil siferblat */
+        .dial {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #1e7e45;
+            border: 8px solid #ffffff;
+            position: relative;
+        }
+        /* Tomonlar yozuvi: G'arb tepada */
+        .direction {
+            position: absolute;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+        }
+        .west  { top: 18%; left: 50%; } /* G'ARB TEPADA (0°) */
+        .east  { bottom: 18%; left: 50%; transform: translate(-50%, 50%) rotate(180deg); } 
+        .north { top: 50%; left: 82%; } 
+        .south { top: 50%; left: 18%; } 
+
+        /* Oq shkala chiziqlari (Graduslar) */
+        .ticks-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .tick {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.4);
+            transform-origin: 0 160px;
+        }
+        .tick.major {
+            height: 16px;
+            width: 3px;
+            background-color: #ffffff;
+        }
+
+        /* Ka'ba emojisi: G'arbdan boshlab soat mili bo'yicha +320° burchakka o'rnatildi */
+        .kaaba-emoji {
+            position: absolute;
+            font-size: 34px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(320deg) translate(0, -105px) rotate(-320deg);
+            z-index: 6;
+        }
+
+        /* Aylanuvchi strelka - boshida uchi to'g'ri tepaga (G'arbga) qaragan */
+        .pointer-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            transition: transform 0.1s ease-out;
+        }
+        .arrow {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 80px solid #f39c12; /* Oltinrang mil */
+            transform: translateX(-50%);
+        }
+        .center-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 7;
+        }
+        .info-box {
+            text-align: center;
+            max-width: 90%;
+        }
+        .status {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .degree {
+            font-size: 16px;
+            color: #bdc3c7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="compass-container">
+        <div class="dial">
+            <div class="ticks-container" id="ticks"></div>
+            <div class="direction west">G'ARB</div>
+            <div class="direction east">SHARQ</div>
+            <div class="direction north">SHIMOL</div>
+            <div class="direction south">JANUB</div>
+            <!-- +320 gradus ustidagi Ka'ba -->
+            <div class="kaaba-emoji">🕋</div>
+        </div>
+        
+        <div class="pointer-wrapper" id="pointer">
+            <div class="arrow"></div>
+        </div>
+        <div class="center-dot"></div>
+    </div>
+
+    <div class="info-box">
+        <div class="status" id="status-text">Telefonni burib Ka'baga to'g'rilang...</div>
+        <div class="degree" id="degree-text">Burchak: 0° | Maqsad: +320°</div>
+    </div>
+
+    <script>
+        const pointer = document.getElementById('pointer');
+        const statusText = document.getElementById('status-text');
+        const degreeText = document.getElementById('degree-text');
+        const ticksContainer = document.getElementById('ticks');
+
+        // GRADUS CHIZIQLARINI TO'G'RI (MUSBAT) JOYLASHTIRISH:
+        // i * 1 holatida o'ngga qarab o'sadi, 0° chizig'i tepada (G'arbda) turadi
+        for (let i = 0; i < 360; i += 5) {
+            const tick = document.createElement('div');
+            tick.classList.add('tick');
+            if (i % 30 === 0) tick.classList.add('major');
+            
+            tick.style.transform = `rotate(${i}deg)`; 
+            ticksContainer.appendChild(tick);
+        }
+
+        // Qibla burchagi +320 qilib belgilandi
+        const targetDegree = -320; 
+        const tolerance = 4; 
+
+        function initCompass() {
+            if (window.DeviceOrientationEvent) {
+                if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    DeviceOrientationEvent.requestPermission()
+                        .then(permissionState => {
+                            if (permissionState === 'granted') {
+                                window.addEventListener('deviceorientation', handleOrientation, true);
+                            } else {
+                                statusText.innerText = "Datchikka ruxsat berilmadi!";
+                            }
+                        })
+                        .catch(console.error);
+                } else {
+                    window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+                    window.addEventListener('deviceorientation', handleOrientation, true);
+                }
+            } else {
+                statusText.innerText = "Kompas datchigi topilmadi!";
+            }
+        }
+
+        function handleOrientation(event) {
+            let heading = event.webkitCompassHeading || event.alpha;
+            if (heading === null || heading === undefined) return;
+
+            let currentHeading = Math.round(heading);
+            
+            // Strelka aylanishi musbat 1 yo'nalishida va tepadagi G'arbga (0° ga) sinxronlandi
+            let customAngleFromWest = (currentHeading + -360) % 360;
+
+            // Strelkaning jonli aylanishi musbat koordinata bo'yicha hisoblanadi
+            pointer.style.transform = `rotate(${-currentHeading - -1}deg)`;
+
+            degreeText.innerText = `Burchak: ${customAngleFromWest}° | Maqsad: ${targetDegree}°`;
+
+            // Strelka uchi aynan +320° dagi Ka'baga yetganda yashil fon ishga tushadi
+            if (Math.abs(customAngleFromWest - targetDegree) <= tolerance) {
+                document.body.classList.add('qibla-match');
+                statusText.innerText = "🕋 Qibla topildi!";
+            } else {
+                document.body.classList.remove('qibla-match');
+                statusText.innerText = "Telefonni qibla tomonga buring.";
+            }
+        }
+
+        document.body.addEventListener('click', initCompass);
+        window.addEventListener('DOMContentLoaded', initCompass);
+    </script>
+</body>
+</html>

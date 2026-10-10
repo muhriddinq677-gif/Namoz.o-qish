@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peshin namozi to'liq erkaklar uchun</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #1e2b34;
+      color: #ffffff;
+    }
+
+    .app-container {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #00a859;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .back-btn {
+      font-size: 20px;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    /* Container */
+    .menu-container {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    /* Accordion Kartalari */
+    details.step-card {
+      background-color: #2c3e50;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    details.step-card summary {
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    details.step-card summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .arrow-icon {
+      font-size: 16px;
+      color: #8fa3b0;
+      transition: transform 0.3s;
+    }
+
+    details[open] .arrow-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Ichki qism */
+    .step-content {
+      padding: 15px 20px 20px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: #253545;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #e0e0e0;
+    }
+
+    /* Rasmlar birinchi keladi */
+    .step-image {
+      width: 100%;
+      max-height: 350px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      background-color: #1e2b34;
+    }
+
+    .step-text {
+      margin-bottom: 12px;
+    }
+
+    /* Sura va duolar bo'limlari */
+    .sub-title {
+      color: #64b5f6;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+      border-left: 3px solid #00a859;
+      padding-left: 8px;
+    }
+
+    .bold-arabic {
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .meaning-text {
+      color: #b0bec5;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .section-divider {
+      background-color: #00a859;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <nav class="navbar">
+      <a href="erkaklar.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+      <h2 class="title">Peshin namozi to'liq erkaklar uchun</h2>
+    </nav>
+
+    <main class="menu-container">
+
+      <div class="section-divider">1-QISM: 4 RAKAT DASTLABKI SUNNAT</div>
+
+      <!-- 1. Niyat va Takbir -->
+      <details class="step-card">
+        <summary>
+          <span class="step-title">1. Niyat va Takbir</span>
+          <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </summary>
+        <div class="step-content">
+          <img src="images/takbir.jpg" alt="Takbir" class="step-image">
+          <p class="step-text"><b>Niyat:</b> «Xolis Alloh uchun Peshin namozining to'rt rakat sunnatini o'qishni niyat qildim».</p>
+          <p class="step-text">Qo'llar quloq yumshoq joyiga tekkizilib: <b>«Allohu akbar»</b> deb namozga kiriladi va qo'llar bog'lanadi.</p>
+        </div>
+      </details>
+
+      <!-- 2. 1-chi Rakat Qiyom -->
+      <details class="step-card">
+        <summary>
+          <span class="step-title">2. 1-chi rakat. Qiyom</span>
+          <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </summary>
+        <div class="step-content">
+          <img src="images/qiyom.jpg" alt="Qiyom" class="step-image">
+          
+          <div class="sub-title">Sano duosi</div>
+          <p class="bold-arabic">Subhanakallohumma va bihamdika va tabarokasmuka va ta'ala jadduka va la ilaha g'oyruk.</p>
+
+          <div class="sub-title">Fotiha surasi</div>
+          <p class="bold-arabic">A'uzu billahi minash-shaytonir-rojiym. Bismillahir-rohmanir-rohiym. Alhamdu lillahi robbil-'alamiyn. Ar-rohmanir-rohiym. Maliki yavmiddiyn. Iyyaka na'budu va iyyaka nasta'iyn. Ihdinas-sirotol-mustaqiym. Sirotollaziyna an'amta 'alayhim g'oyril-mag'zubi 'alayhim valazzolliyn. (Omin)</p>
+
+          <div class="sub-title">Zam sura 1: Kavsar surasi</div>
+          <p class="bold-arabic">Inna a'toynakal-kavsar. Fa solli lirobbika vanhar. Inna shani'aka huval-abtar.</p>
+          <p class="meaning-text">Ma'nosi: Albatta, Biz Senga Kavsarni berdik. Bas, Parvardigoring uchun namoz o'qi va qurbonlik qil. Albatta, g'animingning o'zi dumsizdir.</p>
+
+          <div class="sub-title">Zam sura 2: Ixlos surasi</div>
+          <p class="bold-arabic">Qul huvallohu ahad. Allohus-somad. Lam yalid va lam yulad. Va lam yakul-lahu kufuvan ahad.</p>
+
+          <div class="sub-title">Zam sura 3: Falaq surasi</div>
+          <p class="bold-arabic">Qul a'uzu birobbil-falaq. Min sharri ma khalaq. Va min sharri g'osiqin iza vaqob. Va min sharrin-naffasati fil-'uqad. Va min sharri hasidin iza hasad.</p>
+        </div>
+      </details>
+
+      <!-- 3. Ruku va Sajdalar -->
+      <details class="step-card">
+        <summary>
+          <span class="step-title">3. Ruku va Sajdalar</span>
+          <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </summary>
+        <div class="step-content">
+          <img src="images/ruku.jpg" alt="Ruku" class="step-image">
+          <p class="step-text">Rukuda 3 marta «Subhana robbiyal-'aziym» aytiladi. Tik turib «Sami'allohu liman hamidah, Robbana lakal-hamd» deyiladi.</p>
+          <img src="images/sajda.jpg" alt="Sajda" class="step-image">
+          <p class="step-text">Ikki marta sajda qilinadi, sajdada 3 marta «Subhana robbiyal-a'la» aytiladi.</p>
+        </div>
+      </details>
+
+      <!-- 4. 2-chi rakat va Birinchi o'tirish -->
+      <details class="step-card">
+        <summary>
+          <span class="step-title">4. 2-chi rakat va Birinchi Qa'da</span>
+          <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </summary>
+        <div class="step-content">
+          <img src="images/qiyom.jpg" alt="Qiyom" class="step-image">
+          <p class="step-text">Qiyomga turib Bismillah, Fotiha va zam sura o'qiladi. Ruku va sajdalar bajarilgach, o'tiriladi.</p>
+          <img src="images/qada.jpg" alt="Birinchi o'tirish" class="step-image">
+          
+          <div class="sub-title">Attahiyyat duosi</div>
+          <p class="bold-arabic">Attahiyyatu lillahi vas-solavatu vat-toyyibat. Assalamu 'alayka ayyuhan-nabiyyu va rohmatullohi va barokatuh. Assalamu 'alayna va 'ala 'ibadillahis-solihiyn. Ashhadu alla ilaha illalloh va ashhadu anna Muhammadan 'abduhu va rosuluh.</p>
+          <p class="step-text"><i>Eslatma: Birinchi o'tirishda faqat Attahiyyat o'qilib, «Allohu akbar» deb 3-rakatga turiladi.</i></p>
+        </div>
+      </details>
+
+      <!-- 5. 3 va 4-chi rakatlar hamda Sunnat Salomi -->
+      <details class="step-card">
+        <summary>
+          <span class="step-title">5. 3-4 rakatlar va Sunnat Salomi</span>
+          <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </summary>
+        <div class="step-content">
+          <p class="step-text"><b>3-rakat:</b> Bismillah, Fotiha va zam sura o'qiladi. Ruku va sajdalar qilinadi.</p>
+          <p class="step-text"><b>4-rakat:</b> Bismillah, Fotiha va zam sura o'qiladi. Ruku va sajdalar bajariladi.</p>
+          <img src="images/qada.jpg" alt="Oxirgi o'tirish" class="step-image">
+          <p class="step-text"><b>Oxirgi o'tirish:</b> Attahiyyat, Salovat hamda Robbana duolari o'qiladi.</p>
+          <img src="images/salom.jpg" alt="Salom" class="step-image">
+          <p class="step-text">O'ng va chapga salom berilib 4 rakat sunnat yakunlanadi.</p>
+        </div>
+      </details>
+
+      <div class="section-divider">2-QISM: 4 RAKAT FARZ</div>
+
+      <!-- 6. Iqomat va Farz Niyati -->
+      <details class="step-card">
+        <summary>
+          <span class="step-title">6. Iqomat va Farz Niyati</span>
+          <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </summary>
+        <div class="step-content">
+          <p class="step-text">Erkaklar Iqomat aytishadi. So'ng niyat qilinadi:</p>
+          <p class="step-text"><b>Niyat:</b> «Xolis Alloh uchun Peshin namozining to'rt rakat farzini o'qishni niyat qildim».</p>
+          <p class="step-text">«Allohu akbar» deb takbir aytilib 4 rakat farz boshlanadi.</p>
+        </div>
+      </details>
+
+      <!-- 7. Farzning o'qilish tartibi -->
+      <details class="step-card">
+        <summary>
+          <span class="step-title">7. Farzning 1, 2, 3 va 4-rakatlari</span>
+          <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </summary>
+        <div class="step-content">
+          <p class="step-text"><b>1-rakat:</b> Sano, Fotiha va zam sura o'qiladi.</p>
+          <p class="step-text"><b>2-rakat:</b> Fotiha va zam sura o'qiladi. O'tirishda faqat Attahiyyat o'qiladi.</p>
+          <p class="step-text"><b>3-rakat:</b> <i>Faqat Fotiha surasi o'qiladi (zam sura o'qilmaydi).</i></p>
+          <p class="step-text"><b>4-rakat:</b> <i>Faqat Fotiha surasi o'qiladi (zam sura o'qilmaydi).</i></p>
+          <img src="images/qada.jpg" alt="Farz qa'dasi" class="step-image">
+          <p class="step-text">Oxirgi o'tirishda Attahiyyat, Salovat, Robbana duolari o'qilib salom beriladi.</p>
+        </div>
+      </details>
+
+      <div class="section-divider">3-QISM: 2 RAKAT OXIRGI SUNNAT VA YAKUN</div>
+
+      <!-- 8. 2 Rakat Oxirgi Sunnat va Yakuniy duo -->
+      <details class="step-card">
+        <summary>
+          <span class="step-title">8. 2 Rakat Sunnat va Yakuniy Duo</span>
+          <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </summary>
+        <div class="step-content">
+          <p class="step-text"><b>Niyat:</b> «Xolis Alloh uchun Peshin namozining ikki rakat sunnatini o'qishni niyat qildim».</p>
+          <p class="step-text">Ushbu 2 rakat sunnat xuddi Bomdodning 2 rakat sunnati kabi to'liq o'qilib, salom beriladi.</p>
+          
+          <div class="sub-title">YAKUNIY ZIKR VA DUO</div>
+          <p class="bold-arabic">Allohumma antas-salam va minkas-salam, tabarokta ya zal-jalali val-ikrom.</p>
+          <p class="meaning-text">Ma'nosi: Ey Allohim! Sen Tinchlik egasisan va tinchlik Sendandir. Ey ulug'lik va ikrom egasi bo'lgan Zot, Sen barakotlisan.</p>
+          <p class="step-text">Shuning bilan Peshin namozining to'liq 10 rakati yakunlanadi. Oyatul-Kursiy va tasbehlar aytiladi.</p>
+        </div>
+      </details>
+
+    </main>
+  </div>
+
+</body>
+</html>

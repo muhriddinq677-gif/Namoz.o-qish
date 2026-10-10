@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title data-key="page_title">Namoz oʼqishni oʼrganamiz!</title>
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body {
+      background-color: #1e2b34;
+      color: #ffffff;
+    }
+
+    body.light-mode {
+      background-color: #f4f6f8;
+      color: #1e2b34;
+    }
+
+    body.dark-mode {
+      background-color: #1e2b34;
+      color: #ffffff;
+    }
+
+    .app-container {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #00a859;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .menu-icon {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* TIL */
+    .lang-select {
+      background-color: rgba(255,255,255,0.2);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .lang-select option {
+      background-color: #00a859;
+      color: white;
+    }
+
+    /* REJIM */
+    .theme-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* MENYU */
+    .menu-container {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .card {
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode .card {
+      background-color: #2c3e50;
+    }
+
+    body.dark-mode .card:hover {
+      background-color: #34495e;
+    }
+
+    body.light-mode .card {
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+    }
+
+    body.light-mode .card:hover {
+      background-color: #f9f9f9;
+    }
+
+    .card-icon {
+      font-size: 30px;
+      color: #00a859;
+      width: 40px;
+      text-align: center;
+    }
+
+    .card-text {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body class="dark-mode">
+
+  <div class="app-container">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+      <div class="nav-left">
+
+        <i class="fa-solid fa-bars menu-icon"
+   onclick="window.location.href='hamburger.html'"
+   title="Menyu"
+   role="button"
+   tabindex="0"
+   style="
+     font-size: 28px;
+     color: #ffffff;
+     cursor: pointer;
+     padding: 10px;
+     border-radius: 12px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     transition: background 0.2s, transform 0.2s;
+     -webkit-tap-highlight-color: transparent;
+   "
+   onmouseover="this.style.background='rgba(255,255,255,0.15)'"
+   onmouseout="this.style.background='transparent'"
+   onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.location.href='hamburger.html';}">
+</i>
+
+        <h2 id="navTitle"
+            class="title"
+            data-key="nav_title">
+          Bosh sahifa
+        </h2>
+
+      </div>
+
+      <div class="nav-right">
+
+        <!-- TIL TANLASH -->
+        <select class="lang-select" id="langSelect">
+
+          <option value="latin" data-key="lang_latin">
+            Oʻzbekcha
+          </option>
+
+          <option value="cyrillic" data-key="lang_cyrillic">
+            Ўзбекча
+          </option>
+
+        </select>
+
+        <!-- REJIM -->
+        <button class="theme-btn" id="themeBtn">
+
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+
+          <span id="themeBtnText" data-key="theme_btn">
+            Rejim
+          </span>
+
+        </button>
+
+      </div>
+
+    </nav>
+
+    <!-- ASOSIY MENYU -->
+    <main class="menu-container">
+
+      <a href="vaqt.html" class="card">
+
+        <i class="fa-solid fa-calendar-days card-icon"></i>
+
+        <span class="card-text" data-key="menu_times">
+          Namoz vaqtlari
+        </span>
+
+      </a>
+
+
+      <a href="qibla.html" class="card">
+
+        <i class="fa-solid fa-kaaba card-icon"></i>
+
+        <span class="card-text" data-key="menu_qibla">
+          Qibla
+        </span>
+
+      </a>
+      <a href="tasbeh.html" class="card" title="Tasbeh">
+
+  <i class="fa-solid fa-circle-dot card-icon"></i>
+
+  <span class="card-text" data-key="menu_tasbeh">
+    Tasbeh
+  </span>
+
+</a>
+
+
+      <a href="tahorat.html" class="card">
+
+        <i class="fa-solid fa-faucet-drip card-icon"></i>
+
+        <span class="card-text" data-key="menu_tahorat">
+          Tahorat olish
+        </span>
+
+      </a>
+
+
+      <a href="erkaklar.html" class="card">
+
+        <i class="fa-solid fa-person-praying card-icon"></i>
+
+        <span class="card-text" data-key="menu_men">
+          Erkaklar uchun namoz
+        </span>
+
+      </a>
+
+
+      <a href="ayollar.html" class="card">
+
+        <i class="fa-solid fa-person-dress card-icon"></i>
+
+        <span class="card-text" data-key="menu_women">
+          Ayollar uchun namoz
+        </span>
+
+      </a>
+
+
+      <a href="jamoat.html" class="card">
+
+        <i class="fa-solid fa-people-group card-icon"></i>
+
+        <span class="card-text" data-key="menu_jamoat">
+          Jamoat namozlari
+        </span>
+
+      </a>
+
+
+      <a href="duolar.html" class="card">
+
+        <i class="fa-solid fa-hands-praying card-icon"></i>
+
+        <span class="card-text" data-key="menu_duos">
+          Duolar
+        </span>
+
+      </a>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+
+      <p id="footerText" data-key="footer">
+        Copyright © 2026 Namoz oʼqishni oʼrganamiz!
+      </p>
+
+    </footer>
+
+  </div>
+  <script src="namoz.js"></script>
+</body>
+</html>

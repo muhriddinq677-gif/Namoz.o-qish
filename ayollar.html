@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title data-key="women_title">Ayollar uchun namoz</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    transition:background-color .25s,color .25s;
+}
+
+body{
+    background:#101b24;
+    color:#fff;
+    min-height:100vh;
+}
+
+body.dark-mode{
+    background:#101b24;
+    color:#fff;
+}
+
+body.light-mode{
+    background:#f3f6f8;
+    color:#1e2b34;
+}
+
+.app{
+    max-width:520px;
+    min-height:100vh;
+    margin:auto;
+    box-shadow:0 0 25px #0002;
+}
+
+.navbar{
+    height:76px;
+    background:#00a859;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:0 18px;
+    position:sticky;
+    top:0;
+    z-index:50;
+    box-shadow:0 3px 12px #0003;
+}
+
+.back{
+    color:white;
+    text-decoration:none;
+    font-size:43px;
+    line-height:1;
+}
+
+.navbar h1{
+    font-size:21px;
+    font-weight:700;
+    color:white;
+}
+
+.intro{
+    margin:18px 15px 12px;
+    padding:18px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#087f54,#00a859);
+    color:white;
+    box-shadow:0 5px 15px #0002;
+}
+
+.intro h2{
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.intro p{
+    font-size:14px;
+    line-height:1.7;
+    opacity:.95;
+}
+
+.menu{
+    padding:5px 15px 25px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.menu-card{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:17px;
+    border-radius:15px;
+    background:#20313e;
+    color:#fff;
+    cursor:pointer;
+    border:1px solid #ffffff0d;
+    box-shadow:0 4px 10px #0002;
+}
+
+.menu-card:active{
+    transform:scale(.985);
+}
+
+body.light-mode .menu-card{
+    background:white;
+    color:#1e2b34;
+    border:1px solid #e0e6e9;
+}
+
+.card-icon{
+    width:48px;
+    height:48px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#00a85920;
+    color:#48d69a;
+    font-size:23px;
+    flex-shrink:0;
+}
+
+body.light-mode .card-icon{
+    color:#008d50;
+    background:#e5f7ee;
+}
+
+.card-info{
+    flex:1;
+}
+
+.card-info h3{
+    font-size:17px;
+    margin-bottom:5px;
+}
+
+.card-info p{
+    color:#aebdc7;
+    font-size:13px;
+    line-height:1.5;
+}
+
+body.light-mode .card-info p{
+    color:#657781;
+}
+
+.card-arrow{
+    color:#8fa4b1;
+    font-size:17px;
+}
+
+/* ICHKI NAMOZ OYNALARI */
+
+.sub-screen{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:100;
+    overflow-y:auto;
+    background:#101b24;
+}
+
+body.light-mode .sub-screen{
+    background:#f3f6f8;
+}
+
+.sub-screen.active{
+    display:block;
+}
+
+.screen-header{
+    min-height:72px;
+    background:#00a859;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:12px 17px;
+    position:sticky;
+    top:0;
+    z-index:10;
+    box-shadow:0 3px 10px #0002;
+}
+
+.screen-header button{
+    border:0;
+    background:transparent;
+    color:white;
+    font-size:38px;
+    cursor:pointer;
+    line-height:1;
+}
+
+.screen-header h2{
+    color:white;
+    font-size:20px;
+}
+
+.screen-content{
+    max-width:750px;
+    margin:auto;
+    padding:20px 15px 45px;
+}
+
+.prayer-summary{
+    padding:18px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#087f54,#00a859);
+    color:white;
+    margin-bottom:16px;
+}
+
+.prayer-summary h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.summary-line{
+    font-size:14px;
+    line-height:1.8;
+}
+
+.section-card{
+    background:#20313e;
+    border:1px solid #ffffff0d;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:14px;
+    box-shadow:0 3px 10px #0002;
+}
+
+body.light-mode .section-card{
+    background:#fff;
+    border-color:#e2e7ea;
+}
+
+.section-title{
+    font-size:18px;
+    color:#65dba5;
+    font-weight:700;
+    margin-bottom:12px;
+    line-height:1.5;
+}
+
+body.light-mode .section-title{
+    color:#008d50;
+}
+
+.section-card p{
+    font-size:15px;
+    line-height:1.85;
+    margin-bottom:10px;
+}
+
+.section-card p:last-child{
+    margin-bottom:0;
+}
+
+.step{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    margin:15px 0;
+}
+
+.step-number{
+    min-width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#00a859;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    font-weight:700;
+}
+
+.step-text{
+    font-size:15px;
+    line-height:1.8;
+    flex:1;
+}
+
+.dua{
+    background:#172731;
+    border-left:4px solid #00a859;
+    border-radius:10px;
+    padding:15px;
+    margin:12px 0;
+}
+
+body.light-mode .dua{
+    background:#eef8f2;
+}
+
+.dua-name{
+    color:#65dba5;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+body.light-mode .dua-name{
+    color:#008d50;
+}
+
+.dua-text{
+    font-size:18px;
+    line-height:2;
+    margin-bottom:8px;
+}
+
+.dua-note{
+    font-size:13px;
+    line-height:1.7;
+    color:#aebdc7;
+}
+
+body.light-mode .dua-note{
+    color:#61747d;
+}
+
+.note{
+    background:#293b47;
+    border-radius:12px;
+    padding:15px;
+    font-size:14px;
+    line-height:1.8;
+    margin-top:14px;
+}
+
+body.light-mode .note{
+    background:#fff7df;
+    color:#55451b;
+}
+
+footer{
+    text-align:center;
+    padding:20px 15px;
+    color:#9eafb9;
+    font-size:13px;
+    line-height:1.6;
+}
+
+@media(max-width:500px){
+    .navbar{
+        height:70px;
+        padding:0 14px;
+    }
+
+    .navbar h1{
+        font-size:19px;
+    }
+
+    .intro{
+        padding:16px;
+    }
+
+    .menu-card{
+        padding:15px;
+    }
+
+    .screen-content{
+        padding:15px 12px 35px;
+    }
+
+    .section-card{
+        padding:15px;
+    }
+
+    .section-title{
+        font-size:17px;
+    }
+}
+</style>
+</head>
+
+<body class="dark-mode">
+
+<div class="app">
+
+<header class="navbar">
+    <a href="index.html" class="back">‹</a>
+    <h1 data-key="women_title">Ayollar uchun namoz</h1>
+</header>
+
+<section class="intro">
+    <h2>Namoz o‘rganish</h2>
+    <p>
+        O‘rganmoqchi bo‘lgan namozingizni tanlang.
+        Har bir bo‘limda niyat, rakatlar tartibi va
+        namozda o‘qiladigan duolar tushuntiriladi.
+    </p>
+</section>
+
+<main class="menu">
+
+    <a href="abomdod.html"
+       class="menu-card"
+       style="text-decoration:none">
+
+        <div class="card-icon">
+            <i class="fa-solid fa-sun"></i>
+        </div>
+
+        <div class="card-info">
+            <h3 data-key="bomdod">Bomdod</h3>
+            <p>2 rakat sunnat, 2 rakat farz</p>
+        </div>
+
+        <i class="fa-solid fa-chevron-right card-arrow"></i>
+    </a>
+
+    <div class="menu-card" onclick="openScreen('peshinScreen')">
+        <div class="card-icon">
+            <i class="fa-solid fa-sun"></i>
+        </div>
+        <div class="card-info">
+            <h3 data-key="peshin">Peshin</h3>
+            <p>4 sunnat, 4 farz, 2 sunnat</p>
+        </div>
+        <i class="fa-solid fa-chevron-right card-arrow"></i>
+    </div>
+
+    <div class="menu-card" onclick="openScreen('asrScreen')">
+        <div class="card-icon">
+            <i class="fa-solid fa-cloud-sun"></i>
+        </div>
+        <div class="card-info">
+            <h3 data-key="asr">Asr</h3>
+            <p>4 rakat farz</p>
+        </div>
+        <i class="fa-solid fa-chevron-right card-arrow"></i>
+    </div>
+
+    <div class="menu-card" onclick="openScreen('shomScreen')">
+        <div class="card-icon">
+            <i class="fa-solid fa-cloud-moon"></i>
+        </div>
+        <div class="card-info">
+            <h3 data-key="shom">Shom</h3>
+            <p>3 rakat farz, 2 rakat sunnat</p>
+        </div>
+        <i class="fa-solid fa-chevron-right card-arrow"></i>
+    </div>
+
+    <div class="menu-card" onclick="openScreen('xuftonScreen')">
+        <div class="card-icon">
+            <i class="fa-solid fa-moon"></i>
+        </div>
+        <div class="card-info">
+            <h3 data-key="xufton">Xufton</h3>
+            <p>4 farz, 2 sunnat, 3 vitr</p>
+        </div>
+        <i class="fa-solid fa-chevron-right card-arrow"></i>
+    </div>
+
+    <div class="menu-card" onclick="openScreen('vitrScreen')">
+        <div class="card-icon">
+            <i class="fa-solid fa-star-and-crescent"></i>
+        </div>
+        <div class="card-info">
+            <h3 data-key="vitr">Vitr</h3>
+            <p>3 rakat vojib</p>
+        </div>
+        <i class="fa-solid fa-chevron-right card-arrow"></i>
+    </div>
+
+    <div class="menu-card" onclick="openScreen('qazoScreen')">
+        <div class="card-icon">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+        <div class="card-info">
+            <h3 data-key="qazo">Qazo</h3>
+            <p>O‘tkazib yuborilgan namozlar</p>
+        </div>
+        <i class="fa-solid fa-chevron-right card-arrow"></i>
+    </div>
+
+</main>
+
+<footer data-key="women_footer">
+    Namoz o‘qishni o‘rganamiz!
+</footer>
+
+</div>
+
+<!-- PESHIN -->
+
+<section class="sub-screen" id="peshinScreen">
+<header class="screen-header">
+    <button onclick="closeScreen('peshinScreen')">‹</button>
+    <h2>Peshin namozi</h2>
+</header>
+
+<div class="screen-content">
+
+    <div class="prayer-summary">
+        <h3>Peshin namozi</h3>
+        <div class="summary-line">Jami: 10 rakat</div>
+        <div class="summary-line">4 rakat sunnat + 4 rakat farz + 2 rakat sunnat</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">1. Birinchi 4 rakat sunnat</div>
+
+        <p><b>Niyat:</b> «Xolis Alloh uchun Peshin namozining to‘rt rakat sunnatini o‘qishni niyat qildim» deb ko‘ngildan niyat qilinadi.</p>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-text">
+                Qiblaga yuzlanib, «Allohu akbar» deb namoz boshlanadi.
+                Qo‘llar bog‘lanadi va Sano duosi o‘qiladi.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-text">
+                «A’uzu» va «Bismillah»dan keyin Fotiha surasi,
+                so‘ng zam sura o‘qiladi. Ruku va ikki sajda qilinadi.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-text">
+                Ikkinchi rakatda Fotiha va zam sura o‘qiladi.
+                Ruku va ikki sajdadan keyin o‘tirib Attahiyyat o‘qiladi.
+                So‘ng uchinchi rakatga turiladi.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <div class="step-text">
+                Uchinchi va to‘rtinchi rakatlarda ham Fotiha
+                va zam sura o‘qiladi. To‘rtinchi rakatdan keyin
+                o‘tirib Attahiyyat, Salovat va duo o‘qiladi.
+                O‘ng va chap tomonga salom beriladi.
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">2. To‘rt rakat farz</div>
+
+        <p><b>Niyat:</b> «Xolis Alloh uchun Peshin namozining to‘rt rakat farzini o‘qishni niyat qildim» deb niyat qilinadi.</p>
+
+        <p>
+            Namoz «Allohu akbar» bilan boshlanadi.
+            Birinchi va ikkinchi rakatlarda Fotiha va zam sura o‘qiladi.
+            Ikkinchi rakatdan keyin o‘tirib Attahiyyat o‘qiladi.
+        </p>
+
+        <p>
+            Uchinchi va to‘rtinchi rakatlarda Fotiha surasi o‘qiladi.
+            To‘rtinchi rakatdan keyin Attahiyyat, Salovat va duo
+            o‘qilib, ikki tomonga salom beriladi.
+        </p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">3. Ikki rakat sunnat</div>
+
+        <p><b>Niyat:</b> «Xolis Alloh uchun Peshin namozining ikki rakat sunnatini o‘qishni niyat qildim» deb niyat qilinadi.</p>
+
+        <p>
+            Har ikki rakatda Fotiha va zam sura o‘qiladi.
+            Ikkinchi rakatdan keyin Attahiyyat, Salovat va duo
+            o‘qilib, o‘ng va chap tomonga salom beriladi.
+        </p>
+    </div>
+
+</div>
+</section>
+
+<!-- ASR -->
+
+<section class="sub-screen" id="asrScreen">
+<header class="screen-header">
+    <button onclick="closeScreen('asrScreen')">‹</button>
+    <h2>Asr namozi</h2>
+</header>
+
+<div class="screen-content">
+
+    <div class="prayer-summary">
+        <h3>Asr namozi</h3>
+        <div class="summary-line">4 rakat farz</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">Niyat va namoz tartibi</div>
+
+        <p><b>Niyat:</b> «Xolis Alloh uchun Asr namozining to‘rt rakat farzini o‘qishni niyat qildim» deb ko‘ngildan niyat qilinadi.</p>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-text">
+                «Allohu akbar» deb namoz boshlanadi.
+                Qo‘llar bog‘lanib Sano, A’uzu, Bismillah,
+                Fotiha va zam sura o‘qiladi. Ruku va ikki sajda qilinadi.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-text">
+                Ikkinchi rakatda Fotiha va zam sura o‘qiladi.
+                Ruku va sajdalardan so‘ng o‘tirib Attahiyyat o‘qiladi.
+                Keyin uchinchi rakatga turiladi.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-text">
+                Uchinchi rakatda Fotiha surasi o‘qilib,
+                ruku va ikki sajda qilinadi.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <div class="step-text">
+                To‘rtinchi rakatda Fotiha surasi o‘qiladi.
+                Ruku va sajdalardan keyin o‘tirib Attahiyyat,
+                Salovat va duo o‘qiladi. So‘ng ikki tomonga salom beriladi.
+            </div>
+        </div>
+    </div>
+
+    <div class="note">
+        Eslatma: Asr namozining farzi ichda, past ovozda o‘qiladi.
+    </div>
+
+</div>
+</section>
+
+<!-- SHOM -->
+
+<section class="sub-screen" id="shomScreen">
+<header class="screen-header">
+    <button onclick="closeScreen('shomScreen')">‹</button>
+    <h2>Shom namozi</h2>
+</header>
+
+<div class="screen-content">
+
+    <div class="prayer-summary">
+        <h3>Shom namozi</h3>
+        <div class="summary-line">3 rakat farz + 2 rakat sunnat</div>
+        <div class="summary-line">Jami: 5 rakat</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">1. Uch rakat farz</div>
+
+        <p><b>Niyat:</b> «Xolis Alloh uchun Shom namozining uch rakat farzini o‘qishni niyat qildim» deb niyat qilinadi.</p>
+
+        <p>
+            Birinchi rakatda Sano, Fotiha va zam sura o‘qiladi.
+            Ruku va ikki sajda qilinadi.
+        </p>
+
+        <p>
+            Ikkinchi rakatda Fotiha va zam sura o‘qiladi.
+            Ruku va sajdalardan keyin o‘tirib Attahiyyat o‘qiladi.
+        </p>
+
+        <p>
+            Uchinchi rakatga turib Fotiha surasi o‘qiladi.
+            Ruku va ikki sajdadan keyin o‘tirib Attahiyyat,
+            Salovat va duo o‘qiladi. Ikki tomonga salom beriladi.
+        </p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">2. Ikki rakat sunnat</div>
+
+        <p><b>Niyat:</b> «Xolis Alloh uchun Shom namozining ikki rakat sunnatini o‘qishni niyat qildim» deb niyat qilinadi.</p>
+
+        <p>
+            Birinchi rakatda Fotiha va zam sura o‘qiladi.
+            Ikkinchi rakatda ham Fotiha va zam sura o‘qiladi.
+            Ikkinchi rakatdan keyin Attahiyyat, Salovat va duo
+            o‘qilib, salom beriladi.
+        </p>
+    </div>
+
+</div>
+</section>
+
+<!-- XUFTON -->
+
+<section class="sub-screen" id="xuftonScreen">
+<header class="screen-header">
+    <button onclick="closeScreen('xuftonScreen')">‹</button>
+    <h2>Xufton namozi</h2>
+</header>
+
+<div class="screen-content">
+
+    <div class="prayer-summary">
+        <h3>Xufton namozi</h3>
+        <div class="summary-line">4 rakat farz + 2 rakat sunnat</div>
+        <div class="summary-line">Vitr bilan jami: 9 rakat</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">1. To‘rt rakat farz</div>
+
+        <p><b>Niyat:</b> «Xolis Alloh uchun Xufton namozining to‘rt rakat farzini o‘qishni niyat qildim» deb niyat qilinadi.</p>
+
+        <p>
+            Birinchi va ikkinchi rakatlarda Fotiha va zam sura o‘qiladi.
+            Ikkinchi rakatdan keyin o‘tirib Attahiyyat o‘qiladi.
+        </p>
+
+        <p>
+            Uchinchi va to‘rtinchi rakatlarda Fotiha surasi o‘qiladi.
+            To‘rtinchi rakatdan keyin Attahiyyat, Salovat va duo
+            o‘qilib, salom beriladi.
+        </p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">2. Ikki rakat sunnat</div>
+
+        <p><b>Niyat:</b> «Xolis Alloh uchun Xufton namozining ikki rakat sunnatini o‘qishni niyat qildim» deb niyat qilinadi.</p>
+
+        <p>
+            Har ikki rakatda Fotiha va zam sura o‘qiladi.
+            Ikkinchi rakatdan keyin Attahiyyat, Salovat va duo
+            o‘qilib, salom beriladi.
+        </p>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">3. Vitr namozi</div>
+        <p>
+            Xuftondan keyin uch rakat Vitr vojib namozi o‘qiladi.
+            Uning batafsil tartibi Vitr bo‘limida berilgan.
+        </p>
+    </div>
+
+</div>
+</section>
+
+<!-- VITR -->
+
+<section class="sub-screen" id="vitrScreen">
+<header class="screen-header">
+    <button onclick="closeScreen('vitrScreen')">‹</button>
+    <h2>Vitr namozi</h2>
+</header>
+
+<div class="screen-content">
+
+    <div class="prayer-summary">
+        <h3>Vitr namozi</h3>
+        <div class="summary-line">3 rakat vojib</div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">Niyat va uch rakat tartibi</div>
+
+        <p><b>Niyat:</b> «Xolis Alloh uchun uch rakat Vitr vojib namozini o‘qishni niyat qildim» deb ko‘ngildan niyat qilinadi.</p>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-text">
+                Birinchi rakatda Sano, Fotiha va zam sura o‘qiladi.
+                Ruku va ikki sajda qilinadi.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-text">
+                Ikkinchi rakatda Fotiha va zam sura o‘qiladi.
+                Ruku va sajdalardan keyin o‘tirib Attahiyyat o‘qiladi.
+                So‘ng uchinchi rakatga turiladi.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-text">
+                Uchinchi rakatda Fotiha va zam sura o‘qiladi.
+                So‘ng ruku qilishdan oldin «Allohu akbar» deb
+                takbir aytiladi va qo‘llar ko‘tariladi.
+                Keyin qo‘llar bog‘lanib Qunut duosi o‘qiladi.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <div class="step-text">
+                Qunut duosidan keyin ruku va ikki sajda qilinadi.
+                So‘ng o‘tirib Attahiyyat, Salovat va duo o‘qiladi.
+                O‘ng va chap tomonga salom beriladi.
+            </div>
+        </div>
+    </div>
+
+    <div class="note">Qunut duosi <br>
+      Allohumma inna nasta’iynuka va nastag‘firuka va nu’minu bika va natavakkalu ‘alayka va nusniy ‘alaykal xoyro kullahu, nashkuruka va la nakfuruka va naxla’u va natruku may-yafjuruk.
+
+Allohumma iyyaka na’budu va laka nusolliy va nasjudu va ilayka nas’a va nahfidu, narju rohmataka va naxsha azabaka, inna azabaka bil-kuffari mulhiq.
+    </div>
+
+</div>
+</section>
+
+<!-- QAZO -->
+
+<section class="sub-screen" id="qazoScreen">
+<header class="screen-header">
+    <button onclick="closeScreen('qazoScreen')">‹</button>
+    <h2>Qazo namozlari</h2>
+</header>
+
+<div class="screen-content">
+
+    <div class="prayer-summary">
+        <h3>Qazo namozi</h3>
+        <div class="summary-line">
+            O‘z vaqtida o‘qilmay qolgan farz namozlarini qazo qilish
+        </div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">Qazo namoziga niyat</div>
+
+        <p>
+            Qaysi namoz qazo bo‘lgan bo‘lsa, o‘sha namozning
+            nomi va rakatini belgilab niyat qilinadi.
+        </p>
+
+        <div class="dua">
+            <div class="dua-name">Niyat namunasi</div>
+            <div class="dua-text">
+                «Xolis Alloh uchun zimmamdagi eng birinchi qazo
+                bo‘lgan Peshin namozining farzini o‘qishni niyat qildim».
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">Qazo namozi qanday o‘qiladi?</div>
+
+        <p>
+            Qazo namozi tegishli namozning farzi kabi o‘qiladi.
+            Masalan, Peshinning qazo farzi to‘rt rakat,
+            Shomning qazo farzi uch rakat bo‘ladi.
+        </p>
+
+        <p>
+            Bomdod, Peshin, Asr, Shom va Xufton qazo bo‘lsa,
+            o‘sha namozning farz rakatlari ado qilinadi.
+            Vitr namozining qazosi ham Hanafiy mazhabida o‘qiladi.
+        </p>
+    </div>
+
+    <div class="note">
+        Qazo namozlarining hisob-kitobi va ayrim tafsilotlari
+        bo‘yicha ishonchli ustoz yoki mahalliy imomdan
+        maslahat olish foydali.
+    </div>
+
+</div>
+</section>
+
+<script src="namoz.js"></script>
+
+<script>
+function openScreen(screenId){
+    const screen = document.getElementById(screenId);
+    if(screen){
+        screen.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+}
+
+function closeScreen(screenId){
+    const screen = document.getElementById(screenId);
+    if(screen){
+        screen.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+}
+</script>
+
+</body>
+</html>

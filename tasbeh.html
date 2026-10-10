@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tasbeh — Namoz O‘rganish</title>
+<style>
+:root{--bg:#101114;--panel:#1b2028;--text:#f5f7fa;--muted:#b8c4d1;--accent:#00b879;--line:#303c49;--soft:#123b30}
+body.light-mode{--bg:#f1f5f3;--panel:#fff;--text:#17211d;--muted:#596960;--line:#d8e2dc;--soft:#dff5e9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;transition:background .2s,color .2s}
+header{padding:17px 16px;background:linear-gradient(135deg,#092d32,#124a35);color:#fff;border-radius:0 0 22px 22px}
+.head{max-width:620px;margin:auto;display:flex;align-items:center;gap:12px}
+.back{color:#fff;text-decoration:none;font-size:30px;padding:0 7px}
+h1{font-size:24px;margin:0}header p{margin:3px 0 0;color:#d6e8df;font-size:14px}
+main{max-width:620px;margin:0 auto;padding:16px 14px 32px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:17px;margin-bottom:14px;box-shadow:0 8px 24px #00000012}
+.label{font-size:13px;color:var(--muted);margin-bottom:8px}
+select{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font-size:16px}
+.progressrow{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:15px 0 9px}
+.zikr{font-size:23px;font-weight:700;color:var(--accent)}
+.countlabel{color:var(--muted);font-size:13px}
+.count{font-size:16px;font-weight:bold;white-space:nowrap}
+.track{height:8px;border-radius:20px;background:var(--line);overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,#00a86b,#6ce7a7);transition:width .15s}
+.counterwrap{display:flex;flex-direction:column;align-items:center;padding:18px 0 8px}
+.counter{width:min(70vw,270px);aspect-ratio:1;border-radius:50%;border:10px solid #0c7b54;background:radial-gradient(circle at 35% 25%,#1b6049,#10352e 70%);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;box-shadow:0 0 0 8px #00a86b20,0 12px 30px #0003;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .08s,filter .15s}
+.counter:active{transform:scale(.97);filter:brightness(1.15)}
+.counter .number{font-size:58px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.counter .hint{font-size:14px;color:#d0f5e4;margin-top:8px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+button{border:0;border-radius:13px;padding:13px 12px;font-size:15px;font-weight:700;cursor:pointer}
+.reset{background:var(--line);color:var(--text)}.next{background:var(--accent);color:#fff}
+.status{text-align:center;color:var(--muted);font-size:14px;min-height:23px;margin-top:12px}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.quick button{background:var(--soft);border:1px solid var(--line);color:var(--text);padding:9px 12px}
+.quick button.active{background:var(--accent);color:white;border-color:var(--accent)}
+.smallnote{font-size:13px;color:var(--muted);line-height:1.55}
+</style>
+</head>
+<body>
+<header><div class="head"><a class="back" href="index.html" aria-label="Orqaga">‹</a><div><h1>📿 Tasbeh</h1><p>Zikrlaringizni qulay sanab boring</p></div></div></header>
+<main>
+<section class="panel">
+<div class="label">Zikrni tanlang</div>
+<select id="zikrSelect">
+<option value="subhan" data-target="33">Subhanalloh — 33 marta</option>
+<option value="hamd" data-target="33">Alhamdulillah — 33 marta</option>
+<option value="akbar" data-target="34">Allohu akbar — 34 marta</option>
+<option value="istigfor" data-target="100">Astag‘firulloh — 100 marta</option>
+<option value="salovat" data-target="100">Salovat — 100 marta</option>
+<option value="custom" data-target="21">Subhanalloh — 21 marta</option>
+</select>
+<div class="quick" aria-label="Zikr tez tanlash">
+<button type="button" data-pick="subhan" class="active">Subhanalloh</button>
+<button type="button" data-pick="hamd">Alhamdulillah</button>
+<button type="button" data-pick="akbar">Allohu akbar</button>
+<button type="button" data-pick="custom">21 marta</button>
+</div>
+<div class="progressrow"><div><div class="countlabel">Hozirgi zikr</div><div class="zikr" id="zikrName">Subhanalloh</div></div><div class="count"><span id="current">0</span> / <span id="target">33</span></div></div>
+<div class="track"><div class="fill" id="fill"></div></div>
+<div class="counterwrap"><button type="button" class="counter" id="countBtn" aria-label="Tasbeh sanash"><span class="number" id="number">0</span><span class="hint">BOSING • +1</span></button></div>
+<div class="actions"><button type="button" class="reset" id="resetBtn">↺ Qaytadan boshlash</button><button type="button" class="next" id="nextBtn">Keyingi zikr →</button></div>
+<div class="status" id="status" aria-live="polite">Boshlash uchun katta doirani bosing.</div>
+</section>
+<section class="panel"><div class="label">Qanday ishlaydi?</div><div class="smallnote">Katta doirani har bosganingizda hisob 1 taga oshadi. Maqsad soniga yetganda sahifa xabar beradi. “Qaytadan boshlash” faqat joriy zikr hisobini nol qiladi. Sahifani yangilaganda hisob saqlanib qoladi.</div></section>
+</main>
+<script>
+const select=document.getElementById('zikrSelect');
+const countBtn=document.getElementById('countBtn');
+const numberEl=document.getElementById('number');
+const currentEl=document.getElementById('current');
+const targetEl=document.getElementById('target');
+const nameEl=document.getElementById('zikrName');
+const fill=document.getElementById('fill');
+const statusEl=document.getElementById('status');
+const items={
+ subhan:{name:'Subhanalloh',target:33},hamd:{name:'Alhamdulillah',target:33},
+ akbar:{name:'Allohu akbar',target:34},istigfor:{name:'Astag‘firulloh',target:100},
+ salovat:{name:'Salovat',target:100},custom:{name:'Subhanalloh',target:21}
+};
+let key='subhan',count=0;
+function save(){try{localStorage.setItem('tasbeh-state',JSON.stringify({key,count}));}catch(e){}}
+function render(){
+ const item=items[key];nameEl.textContent=item.name;numberEl.textContent=count;currentEl.textContent=count;targetEl.textContent=item.target;
+ fill.style.width=Math.min(100,count/item.target*100)+'%';
+ document.querySelectorAll('[data-pick]').forEach(b=>b.classList.toggle('active',b.dataset.pick===key));
+}
+function choose(newKey){key=newKey;count=0;select.value=key;statusEl.textContent='Yangi zikr boshlandi.';render();save();}
+select.addEventListener('change',()=>choose(select.value));
+document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.pick)));
+countBtn.addEventListener('click',()=>{
+ const goal=items[key].target;
+ if(count<goal){count++;render();save();
+  if(count===goal)statusEl.textContent='Maqsadga yetdingiz: '+items[key].name+' — '+goal+' marta.';
+  else statusEl.textContent=items[key].name+' — '+count+' marta.';
+ }else statusEl.textContent='Maqsad soniga yetdingiz. Yana sanash uchun qaytadan boshlang.';
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{count=0;statusEl.textContent='Hisob nol qilindi.';render();save();});
+document.getElementById('nextBtn').addEventListener('click',()=>{
+ const order=['subhan','hamd','akbar','istigfor','salovat','custom'];
+ choose(order[(order.indexOf(key)+1)%order.length]);
+});
+try{const old=JSON.parse(localStorage.getItem('tasbeh-state')||'null');if(old&&items[old.key]){key=old.key;count=Math.min(Number(old.count)||0,items[key].target);select.value=key;}}catch(e){}
+(function(){
+ const keys=['theme','mode','colorMode','displayMode'];
+ let saved=null;for(const k of keys){const v=localStorage.getItem(k);if(v){saved=v;break;}}
+ document.body.classList.remove('dark-mode','light-mode');
+ if(saved&&/light|day|kunduz|yorug/i.test(saved))document.body.classList.add('light-mode');else document.body.classList.add('dark-mode');
+})();
+render();
+</script>
+</body></html>

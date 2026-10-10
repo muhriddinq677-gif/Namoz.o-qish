@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Namoz vaqtlari</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f1a20;color:#f4f6f7;
+  min-height:100vh;overflow-x:hidden
+}
+.hero{
+  min-height:440px;padding:28px 24px 70px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 13% 34%,rgba(255,255,255,.25) 0 70px,transparent 72px),
+    radial-gradient(circle at 70% 25%,rgba(255,255,255,.08),transparent 170px),
+    linear-gradient(160deg,#76528b,#3b315f 55%,#18232b);
+}
+.hero:before{
+  content:"";position:absolute;inset:0;opacity:.25;
+  background-image:radial-gradient(#fff 1px,transparent 1px);background-size:55px 55px
+}
+.top,.next,.date{position:relative;z-index:1}
+.top{display:flex;justify-content:space-between;align-items:center}
+.title{font-size:17px;font-weight:700;opacity:.95}
+.location{
+  border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);
+  color:white;border-radius:14px;padding:9px 12px;font-size:13px
+}
+.next{margin-top:48px}
+.next small{font-size:16px;font-weight:700}
+.next h1{font-size:34px;margin:14px 0 4px}
+.count{font-size:64px;font-weight:700;letter-spacing:-2px}
+.date{font-size:25px;font-weight:700;margin-top:42px}
+.card{
+  margin:-8px 0 0;background:#101b21;border-radius:32px 32px 0 0;
+  min-height:500px;padding:26px 16px 30px;position:relative
+}
+.handle{width:52px;height:6px;border-radius:10px;background:#233038;margin:0 auto 28px}
+h2{font-size:28px;margin:0 0 8px}
+.sub{color:#9ca9ae;font-size:16px;margin:0 0 25px}
+.row{
+  display:flex;align-items:center;gap:14px;background:#1b2a32;border-radius:22px;
+  padding:14px 14px;margin:12px 0;min-height:82px;border:2px solid transparent
+}
+.row.active{background:#174d3e;border-color:#49b78c}
+.icon{
+  width:58px;height:58px;border-radius:50%;flex:none;
+  display:grid;place-items:center;font-size:28px;
+  background:linear-gradient(145deg,#162b55,#77a0c5)
+}
+.row.sun .icon{background:linear-gradient(160deg,#ffd48c,#6cc9a0)}
+.row.noon .icon{background:linear-gradient(160deg,#58c9ff,#8fd35e)}
+.row.asr .icon{background:linear-gradient(160deg,#514b9c,#f18b73)}
+.row.evening .icon{background:linear-gradient(160deg,#35207b,#9167d5)}
+.row.night .icon{background:linear-gradient(160deg,#a27eea,#d8c8ff)}
+.name{font-size:22px;font-weight:700;flex:1}
+.time{font-size:28px;font-weight:700;white-space:nowrap}
+.bell{
+  width:45px;height:45px;border-radius:50%;display:grid;place-items:center;
+  background:#155e48;font-size:22px
+}
+.row:not(.active) .bell{background:#22313a;color:#718087}
+.error{display:none;background:#42242a;border:1px solid #a94b58;padding:13px;border-radius:14px;margin-bottom:15px}
+.controls{display:flex;gap:8px;margin-bottom:18px}
+.controls input{
+  flex:1;background:#1b2a32;color:white;border:1px solid #34444d;border-radius:13px;
+  padding:12px;font-size:15px;outline:none
+}
+.controls button{
+  background:#2b8066;color:white;border:0;border-radius:13px;padding:0 15px;font-weight:700
+}
+.note{font-size:12px;color:#73838a;text-align:center;margin-top:18px;line-height:1.5}
+@media(max-width:380px){
+  .count{font-size:54px}.date{font-size:21px}.name{font-size:19px}.time{font-size:24px}
+  .row{gap:9px}.icon{width:52px;height:52px}.bell{width:40px;height:40px}
+}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="top">
+    <div class="title">Namoz vaqtlari</div>
+    <button class="location" id="locBtn">📍 Joylashuvni aniqlash</button>
+  </div>
+  <div class="next">
+    <small>Keyingi namoz</small>
+    <h1 id="nextName">Yuklanmoqda...</h1>
+    <div class="count" id="countdown">--:--</div>
+  </div>
+  <div class="date" id="dateText">--</div>
+</section>
+
+<main class="card">
+  <div class="handle"></div>
+  <h2>Bugungi vaqtlar</h2>
+  <p class="sub">Eslatma belgisini bosib alohida yoqib-o‘chiring</p>
+
+  <div class="controls">
+    <input id="city" value="Tashkent" placeholder="Shahar (masalan: Tashkent)">
+    <button id="loadBtn">Yangilash</button>
+  </div>
+
+  <div class="error" id="error"></div>
+  <div id="prayers"></div>
+  <div class="note">
+    Vaqtlar AlAdhan API orqali olinadi. Hisoblash: Muslim World League,
+    Asr: Hanafi. Mahalliy shahar/joylashuvga qarab vaqtlar farq qilishi mumkin.
+  </div>
+</main>
+
+<script>
+const items=[
+  ["Bomdod","Fajr","🌙",""],
+  ["Quyosh","Sunrise","🌅","sun"],
+  ["Peshin","Dhuhr","☀️","noon"],
+  ["Asr","Asr","🌇","asr"],
+  ["Shom","Maghrib","🌆","evening"],
+  ["Xufton","Isha","🌃","night"]
+];
+
+let times={}, timers={}, alarms={};
+
+function uzDate(d){
+  const days=["Yakshanba","Dushanba","Seshanba","Chorshanba","Payshanba","Juma","Shanba"];
+  const months=["Yanvar","Fevral","Mart","Aprel","May","Iyun","Iyul","Avgust","Sentabr","Oktabr","Noyabr","Dekabr"];
+  return `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
+}
+function cleanTime(t){return (t||"").split(" ")[0].slice(0,5)}
+function minutes(t){
+  const [h,m]=t.split(":").map(Number); return h*60+m;
+}
+function nowMinutes(){const d=new Date();return d.getHours()*60+d.getMinutes()+d.getSeconds()/60}
+
+function render(){
+  const box=document.getElementById("prayers"); box.innerHTML="";
+  const now=nowMinutes();
+  let next=null,nextMin=Infinity;
+
+  items.forEach(([name,key,emoji,cls])=>{
+    const t=cleanTime(times[key]); if(!t)return;
+    const m=minutes(t);
+    if(m>now && m<nextMin){next={name,time:t};nextMin=m}
+    const active=(next && next.name===name);
+    const row=document.createElement("div");
+    row.className=`row ${cls} ${active?"active":""}`;
+    row.innerHTML=`
+      <div class="icon">${emoji}</div>
+      <div class="name">${name}</div>
+      <div class="time">${t}</div>
+      <button class="bell" title="Eslatma" data-key="${key}">⏰</button>`;
+    row.querySelector(".bell").onclick=()=>{
+      alarms[key]=!alarms[key];
+      row.querySelector(".bell").textContent=alarms[key]?"🔔":"⏰";
+    };
+    box.appendChild(row);
+  });
+
+  if(!next){
+    const first=items.map(x=>[x[0],cleanTime(times[x[1]])]).find(x=>x[1]);
+    if(first) next={name:first[0],time:first[1]};
+  }
+  document.getElementById("nextName").textContent=next?next.name:"—";
+  updateCountdown(next);
+}
+function updateCountdown(next){
+  if(!next)return;
+  let target=minutes(next.time)-nowMinutes();
+  if(target<0)target+=1440;
+  const h=Math.floor(target/60),m=Math.floor(target%60),s=Math.floor((target*60)%60);
+  document.getElementById("countdown").textContent=
+    `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+async function loadByCity(city){
+  const err=document.getElementById("error");err.style.display="none";
+  document.getElementById("nextName").textContent="Yuklanmoqda...";
+  try{
+    const d=new Date();
+    const date=`${String(d.getDate()).padStart(2,"0")}-${String(d.getMonth()+1).padStart(2,"0")}-${d.getFullYear()}`;
+    const url=`https://api.aladhan.com/v1/timingsByCity/${date}?city=${encodeURIComponent(city)}&country=Uzbekistan&method=3&school=1`;
+    const res=await fetch(url);
+    if(!res.ok)throw new Error("Server javobi xato");
+    const json=await res.json();
+    if(json.code!==200)throw new Error("Shahar topilmadi");
+    times=json.data.timings;
+    document.getElementById("dateText").textContent=uzDate(d);
+    render();
+  }catch(e){
+    err.textContent="Vaqtlarni olishda xatolik. Internetni tekshiring yoki shahar nomini to‘g‘ri kiriting.";
+    err.style.display="block";
+  }
+}
+document.getElementById("loadBtn").onclick=()=>loadByCity(document.getElementById("city").value.trim()||"Tashkent");
+document.getElementById("city").addEventListener("keydown",e=>{if(e.key==="Enter")document.getElementById("loadBtn").click()});
+document.getElementById("locBtn").onclick=()=>{
+  if(!navigator.geolocation){alert("Brauzer joylashuvni qo‘llamaydi.");return}
+  navigator.geolocation.getCurrentPosition(async p=>{
+    try{
+      const d=new Date();
+      const date=`${String(d.getDate()).padStart(2,"0")}-${String(d.getMonth()+1).padStart(2,"0")}-${d.getFullYear()}`;
+      const url=`https://api.aladhan.com/v1/timings/${date}?latitude=${p.coords.latitude}&longitude=${p.coords.longitude}&method=3&school=1`;
+      const res=await fetch(url); const json=await res.json();
+      if(json.code!==200)throw new Error();
+      times=json.data.timings; document.getElementById("dateText").textContent=uzDate(d); render();
+    }catch(e){alert("Joylashuv bo‘yicha vaqtlarni olib bo‘lmadi.");}
+  },()=>alert("Joylashuvga ruxsat berilmadi."));
+};
+setInterval(()=>{
+  if(Object.keys(times).length) {
+    const now=new Date(); document.getElementById("dateText").textContent=uzDate(now);
+    render();
+  }
+},1000);
+loadByCity("Tashkent");
+</script>
+</body>
+</html>

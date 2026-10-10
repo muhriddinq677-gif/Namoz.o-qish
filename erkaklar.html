@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erkaklar uchun namoz</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    background:#1a262f;
+    color:#fff;
+}
+
+.app-container{
+    max-width:480px;
+    margin:auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+}
+
+.navbar{
+    background:#00a859;
+    color:white;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px 20px;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.back-btn{
+    font-size:20px;
+    color:white;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.title{
+    font-size:19px;
+    font-weight:600;
+}
+
+.menu-container{
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    flex:1;
+}
+
+.menu-card{
+    background:#263643;
+    border-radius:12px;
+    padding:18px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    cursor:pointer;
+    text-decoration:none;
+    color:white;
+}
+
+.menu-card:active{
+    background:#1f2c37;
+}
+
+.icon-box{
+    font-size:26px;
+    color:#64b5f6;
+    width:35px;
+    display:flex;
+    justify-content:center;
+}
+
+.namoz-name{
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    color:#fff;
+}
+
+.sub-screen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#1a262f;
+    z-index:100;
+    display:none;
+    flex-direction:column;
+    overflow-y:auto;
+}
+
+.sub-screen.active{
+    display:flex;
+}
+
+.screen-content{
+    padding:20px;
+    font-size:15px;
+    line-height:1.6;
+    color:#cfd8dc;
+    flex:1;
+}
+
+.info-badge{
+    display:inline-block;
+    background:#00a859;
+    color:#fff;
+    padding:4px 12px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.explanation-box{
+    background:#263643;
+    border-left:4px solid #64b5f6;
+    padding:12px 15px;
+    border-radius:6px;
+    margin-top:15px;
+    margin-bottom:15px;
+    font-size:14px;
+}
+
+.bold-txt{
+    color:#fff;
+    font-weight:700;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-size:16px;
+}
+
+.arabic-txt{
+    font-weight:600;
+    color:#fff;
+    line-height:1.8;
+    background:#21303c;
+    padding:12px;
+    border-radius:8px;
+}
+
+.meaning-txt{
+    font-style:italic;
+    color:#b0bec5;
+    margin-top:6px;
+    margin-bottom:15px;
+    font-size:14px;
+}
+
+.footer{
+    text-align:center;
+    padding:15px;
+    font-size:13px;
+    color:#78909c;
+    border-top:1px solid rgba(255,255,255,.05);
+    margin-top:10px;
+}
+
+/* KUNDUZGI REJIM */
+body.light-mode{
+    background:#f4f6f8;
+    color:#1e2b34;
+}
+
+body.light-mode .menu-card{
+    background:#fff;
+    color:#1e2b34;
+}
+
+body.light-mode .namoz-name{
+    color:#1e2b34;
+}
+
+body.light-mode .sub-screen{
+    background:#f4f6f8;
+}
+
+body.light-mode .screen-content{
+    color:#34495e;
+}
+
+body.light-mode .explanation-box{
+    background:#fff;
+}
+
+body.light-mode .arabic-txt{
+    background:#fff;
+    color:#1e2b34;
+}
+
+body.light-mode .bold-txt{
+    color:#1e2b34;
+}
+
+body.light-mode .meaning-txt{
+    color:#546e7a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app-container">
+
+<nav class="navbar">
+
+<a href="index.html" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i>
+</a>
+
+<h2 class="title" data-key="men_title">
+Erkaklar uchun namoz
+</h2>
+
+</nav>
+
+
+<main class="menu-container">
+
+<!-- AZON -->
+<div class="menu-card"
+onclick="openScreen('screen-azon')">
+
+<div class="icon-box">
+<i class="fa-solid fa-mosque"></i>
+</div>
+
+<span class="namoz-name" data-key="azon">
+AZON VA IQOMAT
+</span>
+
+</div>
+
+
+<!-- BOMDOD -->
+<a href="ebomdod.html" class="menu-card">
+
+<div class="icon-box">
+<i class="fa-solid fa-cloud-sun"></i>
+</div>
+
+<span class="namoz-name" data-key="bomdod">
+BOMDOD NAMOZI
+</span>
+
+</a>
+
+
+<!-- PESHIN -->
+<div class="menu-card"
+onclick="openScreen('screen-peshin')">
+
+<div class="icon-box">
+<div style="font-size:24px;">☀️</div>
+</div>
+
+<span class="namoz-name" data-key="peshin">
+PESHIN NAMOZI
+</span>
+
+</div>
+
+
+<!-- ASR -->
+<div class="menu-card"
+onclick="openScreen('screen-asr')">
+
+<div class="icon-box">
+<i class="fa-solid fa-sun-plant-wilt"></i>
+</div>
+
+<span class="namoz-name" data-key="asr">
+ASR NAMOZI
+</span>
+
+</div>
+
+
+<!-- SHOM -->
+<div class="menu-card"
+onclick="openScreen('screen-shom')">
+
+<div class="icon-box">
+<i class="fa-solid fa-cloud-moon"></i>
+</div>
+
+<span class="namoz-name" data-key="shom">
+SHOM NAMOZI
+</span>
+
+</div>
+
+
+<!-- XUFTON -->
+<div class="menu-card"
+onclick="openScreen('screen-xufton')">
+
+<div class="icon-box">
+<i class="fa-solid fa-moon"></i>
+</div>
+
+<span class="namoz-name" data-key="xufton">
+XUFTON NAMOZI
+</span>
+
+</div>
+
+
+<!-- VITR -->
+<div class="menu-card"
+onclick="openScreen('screen-vitr')">
+
+<div class="icon-box">
+<i class="fa-solid fa-star-and-crescent"></i>
+</div>
+
+<span class="namoz-name" data-key="vitr">
+VITR NAMOZI
+</span>
+
+</div>
+
+
+<!-- QAZO -->
+<div class="menu-card"
+onclick="openScreen('screen-qazo')">
+
+<div class="icon-box">
+<i class="fa-solid fa-clock-rotate-left"></i>
+</div>
+
+<span class="namoz-name" data-key="qazo">
+QAZO NAMOZI
+</span>
+
+</div>
+
+</main>
+
+
+<footer class="footer"
+data-key="men_footer">
+
+© 2026 Namoz O'rganish Ilovasi. Barcha huquqlar himoyalangan.
+
+</footer>
+
+
+
+<!-- ================= AZON ================= -->
+
+<div id="screen-azon" class="sub-screen">
+
+<nav class="navbar">
+
+<span class="back-btn"
+onclick="closeScreen('screen-azon')">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</span>
+
+<h2 class="title" data-key="azon_title">
+Azon va Iqomat
+</h2>
+
+</nav>
+
+
+<div class="screen-content">
+
+<p class="bold-txt"
+data-key="azon_matni">
+
+1. Azon matni (To'liq):
+
+</p>
+
+<p class="arabic-txt">
+
+Allohu akbar, Allohu akbar.<br>
+Allohu akbar, Allohu akbar.<br>
+Ashhadu alla ilaha illalloh.<br>
+Ashhadu alla ilaha illalloh.<br>
+Ashhadu anna Muhammadar-rosululloh.<br>
+Ashhadu anna Muhammadar-rosululloh.<br>
+Hayya 'alas-solah, Hayya 'alas-solah.<br>
+Hayya 'alal-falah, Hayya 'alal-falah.<br>
+Allohu akbar, Allohu akbar.<br>
+La ilaha illalloh.
+
+</p>
+
+<div class="explanation-box">
+
+<b data-key="azon_eslatma">
+Eslatma:
+</b>
+
+<span data-key="azon_bomdod">
+
+Bomdod azonida «Hayya 'alal-falah»dan so'ng 2 marta «As-solatu khayrum-minan-nawm» aytiladi.
+
+</span>
+
+</div>
+
+
+<p class="bold-txt"
+data-key="azon_manosi">
+
+Azon ma'nosi:
+
+</p>
+
+<p class="meaning-txt">
+
+Alloh buyukdir! Allohdan o'zga iloh yo'qligiga guvohlik beraman. Muhammad Allohning elchisi ekanligiga guvohlik beraman. Namozga keling! Najotga keling! Alloh buyukdir! Allohdan o'zga iloh yo'qdir. (Bomdodda: Namoz uyqudan afzaldir).
+
+</p>
+
+
+<hr style="border:0;border-top:1px solid rgba(255,255,255,.1);margin:20px 0;">
+
+
+<p class="bold-txt"
+data-key="iqomat_matni">
+
+2. Iqomat matni (To'liq):
+
+</p>
+
+<p class="arabic-txt">
+
+Allohu akbar, Allohu akbar.<br>
+Allohu akbar, Allohu akbar.<br>
+Ashhadu alla ilaha illalloh.<br>
+Ashhadu alla ilaha illalloh.<br>
+Ashhadu anna Muhammadar-rosululloh.<br>
+Ashhadu anna Muhammadar-rosululloh.<br>
+Hayya 'alas-solah, Hayya 'alas-solah.<br>
+Hayya 'alal-falah, Hayya 'alal-falah.<br>
+Qod qomatis-solah, Qod qomatis-solah.<br>
+Allohu akbar, Allohu akbar.<br>
+La ilaha illalloh.
+
+</p>
+
+
+<p class="bold-txt"
+data-key="iqomat_manosi">
+
+Iqomat ma'nosi:
+
+</p>
+
+<p class="meaning-txt">
+
+Iqomat matni azon bilan bir xil, faqat unda «Qod qomatis-solah» (Batahqiq namoz boshlandi) iborasi qo'shiladi hamda erkaklar farz namozidan oldin uni tezroq ohangda aytishadi.
+
+</p>
+
+</div>
+</div>
+
+
+
+<!-- ================= PESHIN ================= -->
+
+<div id="screen-peshin" class="sub-screen">
+
+<nav class="navbar">
+
+<span class="back-btn"
+onclick="closeScreen('screen-peshin')">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</span>
+
+<h2 class="title" data-key="peshin_title">
+Peshin namozi
+</h2>
+
+</nav>
+
+<div class="screen-content">
+
+<span class="info-badge"
+data-key="jami_10">
+
+Jami: 10 rakat
+
+</span>
+
+<p class="bold-txt"
+data-key="oqilish">
+
+O'qilish tartibi:
+
+</p>
+
+<p>
+
+1. Avval <b>4 rakat sunnat</b> o'qiladi.<br>
+
+2. Keyin Iqomat aytilib <b>4 rakat farz</b> o'qiladi.<br>
+
+3. Oxirida <b>2 rakat sunnat</b> o'qiladi.
+
+</p>
+
+
+<div class="explanation-box">
+
+<b>📌 Iqomat nima?</b><br>
+
+Iqomat — erkaklar farz namozini boshlashdan oldin aytadigan chaqirig'idir. Sunnat namozlaridan oldin iqomat aytilmaydi, faqat Farzdan oldin aytiladi.
+
+</div>
+
+
+<div class="explanation-box">
+
+<b>📌 Nega Farzning 3-4 rakatlarida Zam sura o'qilmaydi?</b><br>
+
+Farz namozlarining faqat dastlabki 2 rakatida Fotiha surasidan keyin Zam sura qo'shiladi. 3 va 4-rakatlarda esa <b>faqat Fotiha surasi</b> o'qiladi. Sunnat namozlarida esa barcha rakatlarda Zam sura o'qiladi.
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- ================= ASR ================= -->
+
+<div id="screen-asr" class="sub-screen">
+
+<nav class="navbar">
+
+<span class="back-btn"
+onclick="closeScreen('screen-asr')">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</span>
+
+<h2 class="title" data-key="asr_title">
+Asr namozi
+</h2>
+
+</nav>
+
+<div class="screen-content">
+
+<span class="info-badge"
+data-key="jami_4">
+
+Jami: 4 rakat
+
+</span>
+
+<p class="bold-txt"
+data-key="oqilish">
+
+O'qilish tartibi:
+
+</p>
+
+<p>
+Asr namozida sunnat yo'q, <b>faqat 4 rakat farz</b> o'qiladi.
+</p>
+
+<div class="explanation-box">
+
+<b>Ketma-ketlik:</b><br>
+
+• Avval tezroq ohangda <b>Iqomat</b> aytiladi.<br>
+• Niyat qilinib 4 rakat farz o'qiladi.<br>
+• 1 va 2-rakatda Fotiha + Zam sura, 3 va 4-rakatda faqat Fotiha o'qiladi. Suralar va duolar ichda aytiladi.
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- ================= SHOM ================= -->
+
+<div id="screen-shom" class="sub-screen">
+
+<nav class="navbar">
+
+<span class="back-btn"
+onclick="closeScreen('screen-shom')">
+
+<i class="fa-solid fa-arrow-left"></i>
+</span>
+
+<h2 class="title" data-key="shom_title">
+Shom namozi
+</h2>
+
+</nav>
+
+<div class="screen-content">
+
+<span class="info-badge"
+data-key="jami_5">
+
+Jami: 5 rakat
+
+</span>
+
+<p class="bold-txt"
+data-key="oqilish">
+
+O'qilish tartibi:
+
+</p>
+
+<p>
+
+1. Avval Iqomat aytilib <b>3 rakat farz</b> o'qiladi.<br>
+
+2. Farz tugagach <b>2 rakat sunnat</b> o'qiladi.
+
+</p>
+
+<div class="explanation-box">
+
+<b>3 rakatli farz qoidasi:</b><br>
+
+• 1 va 2-rakatda suralar ovoz chiqarib o'qiladi.<br>
+
+• 2-rakat sajdalaridan so'ng o'tirib (Qa'da) faqat Attahiyyat o me'yorida o'qiladi va salom bermasdan 3-rakatga turiladi.<br>
+
+• 3-rakatda faqat Fotiha surasi o'qilib, sajdadan so'ng salom beriladi.
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- ================= XUFTON ================= -->
+
+<div id="screen-xufton" class="sub-screen">
+
+<nav class="navbar">
+
+<span class="back-btn"
+onclick="closeScreen('screen-xufton')">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</span>
+
+<h2 class="title" data-key="xufton_title">
+Xufton namozi
+</h2>
+
+</nav>
+
+<div class="screen-content">
+
+<span class="info-badge"
+data-key="jami_6">
+
+Jami: 6 rakat (Vitr bilan 9)
+
+</span>
+
+<p class="bold-txt"
+data-key="oqilish">
+
+O'qilish tartibi:
+
+</p>
+
+<p>
+
+1. Avval Iqomat aytilib <b>4 rakat farz</b> o'qiladi (1-2 rakatlarda suralar ovoz chiqarib o'qiladi).<br>
+
+2. So'ng <b>2 rakat sunnat</b> o'qiladi.<br>
+
+3. Oxirida <b>3 rakat Vitr vajib</b> namozi o'qiladi.
+
+</p>
+
+</div>
+</div>
+
+
+
+<!-- ================= VITR ================= -->
+
+<div id="screen-vitr" class="sub-screen">
+
+<nav class="navbar">
+
+<span class="back-btn"
+onclick="closeScreen('screen-vitr')">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</span>
+
+<h2 class="title" data-key="vitr_title">
+Vitr namozi
+</h2>
+
+</nav>
+
+<div class="screen-content">
+
+<span class="info-badge"
+data-key="jami_3">
+
+Jami: 3 rakat (Vajib)
+
+</span>
+
+<div class="explanation-box">
+
+<b data-key="oqilish">
+O'qilish tartibi:
+</b><br>
+
+• 1 va 2-rakatlarda Fotiha va Zam sura o'qiladi. 2-rakatda o'tirib faqat Attahiyyat o'qiladi.<br>
+
+• 3-rakatga turib Fotiha va Zam sura o'qiladi.<br>
+
+• Sura tugagach ruku qilmay, turgan holatda <b>«Allohu akbar»</b> deb quloq qoqib qayta takbir aytiladi.<br>
+
+• Qo'llar bog'lanib <b>Qunut duosi</b> o'qiladi va rukuga boriladi.
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- ================= QAZO ================= -->
+
+<div id="screen-qazo" class="sub-screen">
+
+<nav class="navbar">
+
+<span class="back-btn"
+onclick="closeScreen('screen-qazo')">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</span>
+
+<h2 class="title" data-key="qazo_title">
+Qazo namozi
+</h2>
+
+</nav>
+
+<div class="screen-content">
+
+<p>
+
+Insonga balog'at yoshiga yetganidan boshlab namoz o'qish farz bo'ladi.
+
+</p>
+
+<br>
+
+<div class="explanation-box">
+
+<b>⚠️ Qazo namozlarining muhim qoidasi:</b><br>
+
+Agar inson balog'atga yetganidan so'ng 1 kun, 1 oy yoki 3 yil o'tib namoz o'qishni boshlagan bo'lsa, o'sha o'tkazib yuborilgan 1 kunlik bo'lsin yoki 3 yillik bo'lsin — barcha qazo bo'lgan namozlarni o'qib berishi <b>SHART</b> hisoblanadi.
+
+</div>
+
+<br>
+
+<p>
+
+Qazo namozlarida faqat <b>FARZLAR</b> va Vitr namozining qazosi o'qiladi. Sunnat namozlarining qazosi o'qilmaydi.
+
+</p>
+
+<br>
+
+<div class="explanation-box">
+
+<b>Niyat qilish:</b><br>
+
+«Xolis Alloh uchun zimmamdagi eng birinchi qazo bo'lgan Bomdod (yoki Peshin/Asr/Shom/Xufton) farzini o'qishni niyat qildim».
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<script>
+function openScreen(screenId){
+    const screen=document.getElementById(screenId);
+    if(screen){
+        screen.classList.add("active");
+    }
+}
+
+function closeScreen(screenId){
+    const screen=document.getElementById(screenId);
+    if(screen){
+        screen.classList.remove("active");
+    }
+}
+</script>
+      <script src="namoz.js"></script>
+</body>
+</html>

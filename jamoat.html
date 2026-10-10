@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jamoat namozlari</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#192a33;color:#f5f7f8;font-family:Arial,sans-serif;font-size:17px;line-height:1.7}
+header{min-height:70px;background:#00a859;display:flex;align-items:center;gap:15px;padding:13px 18px;position:sticky;top:0;z-index:5}
+.back{border:0;background:transparent;color:#fff;font-size:35px;line-height:1;cursor:pointer;padding:0 4px}
+header h1{font-size:24px;margin:0;font-weight:700}
+main{max-width:760px;margin:auto;padding:22px 18px 42px}
+.menu-item{width:100%;min-height:90px;background:#263743;border:0;border-radius:22px;color:#f6f7f8;display:flex;align-items:center;text-align:left;padding:18px 22px;margin:7px 0 22px;gap:22px;font-size:21px;font-weight:700;cursor:pointer}
+.symbol{font-size:36px;color:#64b5f6;min-width:42px;text-align:center}
+.page{display:none}.page.active{display:block}
+h2{font-size:23px;margin:12px 0 14px}h3{font-size:20px;margin:22px 0 10px}
+p{margin:9px 0 14px}
+.text-card{background:#223440;border-radius:15px;padding:18px 20px;margin:12px 0 22px;font-size:18px;font-weight:600}
+.note{background:#223440;border-left:7px solid #64b5f6;border-radius:12px;padding:17px 18px;margin:20px 0;color:#cbd5dc;font-size:17px}
+.note strong{color:#fff}ol,ul{padding-left:25px}li{padding-left:3px;margin:0 0 12px}
+@media(max-width:400px){header h1{font-size:21px}.menu-item{font-size:18px;padding:16px}.text-card{font-size:17px}}
+</style>
+</head>
+<body>
+<header>
+<button class="back" id="backBtn" aria-label="Orqaga">←</button>
+<h1 data-key="jamoat_namozlari">Жамоат намозлари</h1>
+</header>
+<main>
+<div id="menu" class="page active">
+<button class="menu-item" data-open="juma"><span class="symbol">🕌</span><span data-key="juma_namozi">ЖУМА НАМОЗИ</span></button>
+<button class="menu-item" data-open="taroveh"><span class="symbol">🌙</span><span data-key="taroveh_namozi">ТАРОВЕҲ НАМОЗИ</span></button>
+<button class="menu-item" data-open="ramazon"><span class="symbol">☀️</span><span data-key="ramazon_hayiti_namozi">РАМАЗОН ҲАЙИТИ НАМОЗИ</span></button>
+<button class="menu-item" data-open="qurbon"><span class="symbol">⭐</span><span data-key="qurbon_hayiti_namozi">ҚУРБОН ҲАЙИТИ НАМОЗИ</span></button>
+</div>
+
+<section id="juma" class="page">
+<h2 data-key="juma_sarlavha">Жума намози</h2>
+<p data-key="juma_tavsif">Жума намози жума куни пешин вақтида жамоат билан ўқилади. Ҳанафий мазҳабида шартларига жавоб берадиган эркак мусулмонларга фарздир. Жума намозининг фарзи имом билан икки ракат қилиб ўқилади.</p>
+<h3 data-key="rakatlar_tartibi">Ракатлари тартиби:</h3>
+<div class="text-card"><ol>
+<li data-key="juma_sunnat_oldin">Одатда хутбадан олдин 4 ракат суннат ўқилади.</li>
+<li data-key="juma_xutba">Имом хутба қилади. Хутба вақтида жим туриб тингланади.</li>
+<li data-key="juma_farzi">Имомга эргашиб 2 ракат жума фарзи ўқилади.</li>
+<li data-key="juma_sunnat_keyin">Фарздан кейин одатда 4 ракат суннат, сўнг 2 ракат суннат ўқилади.</li>
+</ol></div>
+<h3 data-key="niyat">Ният</h3>
+<div class="text-card" data-key="juma_niyat">Ният қалб билан қилинади. Масалан: «Жума намозининг икки ракат фарзини ушбу имомга иқтидо қилиб ўқишни ният қилдим».</div>
+<h3 data-key="jamoatda_oqish_tartibi">Жамоатда ўқиш тартиби</h3>
+<div class="text-card"><ol>
+<li data-key="safga_turing">Сафга туринг, имомга эргашишга ният қилинг.</li>
+<li data-key="imom_takbir">Имом такбир айтганда, унга эргашиб намозни бошланг.</li>
+<li data-key="imomdan_oldin">Руку ва саждаларда имомдан олдин ҳаракат қилманг.</li>
+<li data-key="imom_salom">Имом салом бергач, фарз намози тугайди.</li>
+</ol></div>
+<div class="note"><strong data-key="eslatma">Эслатма:</strong> <span data-key="juma_eslatma">Хутба вақтида гаплашманг. Суннат ракатлари ва айрим тафсилотларда маҳаллий имом кўрсатмасига амал қилинг.</span></div>
+</section>
+
+<section id="taroveh" class="page">
+<h2 data-key="taroveh_sarlavha">Таровеҳ намози</h2>
+<p data-key="taroveh_tavsif">Таровеҳ Рамазон ойида хуфтон намозидан кейин ўқилади. Ҳанафий мазҳабида таровеҳ 20 ракатдир; одатда ҳар икки ракатдан кейин салом берилади.</p>
+<h3 data-key="rakat_va_niyat">Ракатлари ва ният</h3>
+<div class="text-card"><ul>
+<li data-key="taroveh_jami">Жами 20 ракат: ўнта икки ракатли намоз.</li>
+<li data-key="taroveh_niyat">Ният намунаси: «Таровеҳ намозидан икки ракат ўқишни ният қилдим ва имомга иқтидо қилдим».</li>
+<li data-key="taroveh_vitr">Таровеҳдан кейин витр намози ўқилади.</li>
+</ul></div>
+<h3 data-key="ikki_rakat_tartibi">Ҳар икки ракатнинг тартиби</h3>
+<div class="text-card"><ol>
+<li data-key="imom_takbir">Имом такбир айтганда, унга эргашиб намозни бошланг.</li>
+<li data-key="sano_imom">Сано дуосини ўқинг; кейин имом қироат қилади.</li>
+<li data-key="ruku_sajda">Имом билан руку ва икки сажда бажаринг.</li>
+<li data-key="ikkinchi_rakat_turish">Иккинчи ракатга туринг ва имом қироатини тингланг.</li>
+<li data-key="oxirgi_otirish">Охирги ўтиришда ташаҳҳуд, салавот ва дуо ўқиб, салом беринг.</li>
+</ol></div>
+<div class="note" data-key="taroveh_eslatma">Жамоатда имомга эргашинг. Қироат тартиби бўйича масжидингиз имомининг кўрсатмасига амал қилинг.</div>
+</section>
+
+<section id="ramazon" class="page">
+<h2 data-key="ramazon_hayiti_sarlavha">Рамазон ҳайити намози</h2>
+<p data-key="ramazon_tavsif">Рамазон ҳайити намози Рамазон ойи тугагач, ҳайит куни жамоат билан ўқилади. Ҳанафий мазҳабида икки ракат вожиб ҳисобланади.</p>
+<h3 data-key="niyat">Ният</h3>
+<div class="text-card" data-key="ramazon_niyat">«Рамазон ҳайити намозининг икки ракат вожибини ўқишни ният қилдим ва имомга иқтидо қилдим».</div>
+<h3 data-key="birinchi_rakat">Биринчи ракат</h3>
+<div class="text-card"><ol>
+<li data-key="hayit_boshlash">Имом такбир айтганда намозни бошланг, сўнг сано дуосини ўқинг.</li>
+<li data-key="hayit_takbir_1">Сано дуосидан кейин учта қўшимча такбир айтилади. Ҳар сафар қўллар кўтарилади; дастлабки икки такбирдан кейин қўллар туширилади.</li>
+<li data-key="hayit_takbir_2">Учинчи қўшимча такбирдан кейин қўллар боғланади, имом қироат қилади.</li>
+<li data-key="ruku_sajda">Имом билан руку ва икки сажда бажаринг.</li>
+</ol></div>
+<h3 data-key="ikkinchi_rakat">Иккинчи ракат</h3>
+<div class="text-card"><ol>
+<li data-key="ikkinchi_rakat_turish">Иккинчи ракатга туринг ва имом қироатини тингланг.</li>
+<li data-key="hayit_takbir_3">Қироатдан кейин учта қўшимча такбир айтилади; ҳар бирида қўллар кўтарилиб, туширилади.</li>
+<li data-key="hayit_ruku">Кейинги такбир билан руку қилинг, сўнг икки сажда бажаринг.</li>
+<li data-key="hayit_salom">Охирги ўтиришда ташаҳҳуд, салавот ва дуо ўқиб, имом билан салом беринг.</li>
+</ol></div>
+<div class="note" data-key="hayit_xutba">Ҳайит хутбаси намоздан кейин бўлади. Имомга эргашинг ва хутбани тингланг.</div>
+</section>
+
+<section id="qurbon" class="page">
+<h2 data-key="qurbon_hayiti_sarlavha">Қурбон ҳайити намози</h2>
+<p data-key="qurbon_tavsif">Қурбон ҳайити намози Зулҳижжа ойининг ўнинчи куни ҳайит намози вақти киргач жамоат билан ўқилади. Ҳанафий мазҳабида икки ракат вожиб ҳисобланади.</p>
+<h3 data-key="niyat">Ният</h3>
+<div class="text-card" data-key="qurbon_niyat">«Қурбон ҳайити намозининг икки ракат вожибини ўқишни ният қилдим ва имомга иқтидо қилдим».</div>
+<h3 data-key="birinchi_rakat">Биринчи ракат</h3>
+<div class="text-card"><ol>
+<li data-key="hayit_boshlash">Имом такбир айтганда намозни бошланг, сўнг сано дуосини ўқинг.</li>
+<li data-key="hayit_takbir_1">Сано дуосидан кейин учта қўшимча такбир айтилади. Ҳар сафар қўллар кўтарилади; дастлабки икки такбирдан кейин қўллар туширилади.</li>
+<li data-key="hayit_takbir_2">Учинчи қўшимча такбирдан кейин қўллар боғланади, имом қироат қилади.</li>
+<li data-key="ruku_sajda">Имом билан руку ва икки сажда бажаринг.</li>
+</ol></div>
+<h3 data-key="ikkinchi_rakat">Иккинчи ракат</h3>
+<div class="text-card"><ol>
+<li data-key="ikkinchi_rakat_turish">Иккинчи ракатга туринг ва имом қироатини тингланг.</li>
+<li data-key="hayit_takbir_3">Қироатдан кейин учта қўшимча такбир айтилади; ҳар бирида қўллар кўтарилиб, туширилади.</li>
+<li data-key="hayit_ruku">Кейинги такбир билан руку қилинг, сўнг икки сажда бажаринг.</li>
+<li data-key="hayit_salom">Охирги ўтиришда ташаҳҳуд, салавот ва дуо ўқиб, имом билан салом беринг.</li>
+</ol></div>
+<div class="note" data-key="hayitlar_eslatma">Рамазон ва Қурбон ҳайити намозларининг ҳанафий тартиби бир хил. Қўшимча такбирларда имомга эргашинг.</div>
+</section>
+
+<div class="note"><strong data-key="eslatma">Эслатма:</strong> <span data-key="umumiy_eslatma">Бу саҳифа ўрганиш учун қўлланма. Айрим тафсилотларда масжид имоми кўрсатмасига амал қилинг.</span></div>
+</main>
+<script>
+let currentPage = 'menu';
+
+function openPage(id) {
+    document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+    currentPage = id;
+    window.scrollTo(0, 0);
+}
+
+document.querySelectorAll('[data-open]').forEach(b => {
+    b.addEventListener('click', () => openPage(b.dataset.open));
+});
+
+document.getElementById('backBtn').addEventListener('click', () => {
+    if (currentPage !== 'menu') {
+        openPage('menu');
+    } else {
+        window.location.href = 'index.html';
+    }
+});
+
+/* index.html dagi saqlangan rejimni olish */
+(function () {
+    const savedMode = localStorage.getItem('theme');
+
+    if (savedMode) {
+        document.body.classList.remove(
+            'dark-mode',
+            'light-mode'
+        );
+
+        document.body.classList.add(savedMode);
+    }
+})();
+</script>
+
+<script src="namoz.js"></script>
+</body>
+</html>
